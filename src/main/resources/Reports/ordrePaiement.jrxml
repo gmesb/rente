@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report3" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f14cdcf3-2f32-4431-ad56-c475456ab49a">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<subDataset name="New Dataset 1" uuid="af39b033-fd1c-4a2d-a8f3-ab8f466a4466"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     vordreliquidatif.`rentierid` AS v_ordreliquidatif_rentier_id,
+     vordreliquidatif.`dossier` AS v_ordreliquidatif_dossier,
+     vordreliquidatif.`nomfamille` AS v_ordreliquidatif_nomfamille,
+     vordreliquidatif.`nommarital` AS v_ordreliquidatif_nommarital,
+     vordreliquidatif.`prenom` AS v_ordreliquidatif_prenom,
+     vordreliquidatif.`datenaissance` AS v_ordreliquidatif_datenaissance,
+     vordreliquidatif.`adresse1` AS v_ordreliquidatif_adresse1,
+     vordreliquidatif.`adresse2` AS v_ordreliquidatif_adresse2,
+     vordreliquidatif.`codepostal` AS v_ordreliquidatif_codepostal,
+     vordreliquidatif.`ville` AS v_ordreliquidatif_ville,
+     vordreliquidatif.`banque` AS v_ordreliquidatif_banque,
+     vordreliquidatif.`guichet` AS v_ordreliquidatif_guichet,
+     vordreliquidatif.`codebanque` AS v_ordreliquidatif_codebanque,
+     vordreliquidatif.`compte` AS v_ordreliquidatif_compte,
+     vordreliquidatif.`cle` AS v_ordreliquidatif_cle,
+     vordreliquidatif.`iban` AS v_ordreliquidatif_iban,
+     vordreliquidatif.`dateaccident` AS v_ordreliquidatif_dateaccident,
+     vordreliquidatif.`titulairelibel` AS v_ordreliquidatif_titulaire_libel,
+     vordreliquidatif.`gradelibel` AS v_ordreliquidatif_grade_libel,
+     vordreliquidatif.`renteid` AS v_ordreliquidatif_rente_id,
+     vordreliquidatif.`txippaycause` AS v_ordreliquidatif_txippaycause,
+     vordreliquidatif.`txippaydroit` AS v_ordreliquidatif_txippaydroit,
+     vordreliquidatif.`montantrevalorise` AS v_ordreliquidatif_montantrevalorise,
+     vordreliquidatif.`coeff` AS v_ordreliquidatif_coeff,
+     vordreliquidatif.`daterevalorisation` AS v_ordreliquidatif_daterevalorisation,
+     vordreliquidatif.`directive` AS v_ordreliquidatif_directive,
+     vordreliquidatif.`versementid` AS v_ordreliquidatif_versement_id,
+     vordreliquidatif.`periodeversee` AS v_ordreliquidatif_periodeversee,
+     vordreliquidatif.`montant` AS v_ordreliquidatif_montant,
+     vordreliquidatif.`dateversem` AS v_ordreliquidatif_dateversem,
+     vordreliquidatif.`rentelibel` AS v_ordreliquidatif_rente_libel,
+     vordreliquidatif.`etatrente` AS v_ordreliquidatif_etatrente,
+     vordreliquidatif.`datedeb` AS v_ordreliquidatif_datedeb,
+     vordreliquidatif.`datefin` AS v_ordreliquidatif_datefin
+FROM
+     `vordreliquidatif` vordreliquidatif]]>
+	</queryString>
+	<field name="v_ordreliquidatif_rentier_id" class="java.lang.Integer"/>
+	<field name="v_ordreliquidatif_dossier" class="java.lang.Integer"/>
+	<field name="v_ordreliquidatif_nomfamille" class="java.lang.String"/>
+	<field name="v_ordreliquidatif_nommarital" class="java.lang.String"/>
+	<field name="v_ordreliquidatif_prenom" class="java.lang.String"/>
+	<field name="v_ordreliquidatif_datenaissance" class="java.sql.Date"/>
+	<field name="v_ordreliquidatif_adresse1" class="java.lang.String"/>
+	<field name="v_ordreliquidatif_adresse2" class="java.lang.String"/>
+	<field name="v_ordreliquidatif_codepostal" class="java.lang.String"/>
+	<field name="v_ordreliquidatif_ville" class="java.lang.String"/>
+	<field name="v_ordreliquidatif_banque" class="java.lang.String"/>
+	<field name="v_ordreliquidatif_guichet" class="java.lang.String"/>
+	<field name="v_ordreliquidatif_codebanque" class="java.lang.String"/>
+	<field name="v_ordreliquidatif_compte" class="java.lang.String"/>
+	<field name="v_ordreliquidatif_dateaccident" class="java.sql.Date"/>
+	<field name="v_ordreliquidatif_titulaire_libel" class="java.lang.String"/>
+	<field name="v_ordreliquidatif_grade_libel" class="java.lang.String"/>
+	<field name="v_ordreliquidatif_rente_id" class="java.lang.Integer"/>
+	<field name="v_ordreliquidatif_txippaycause" class="java.math.BigDecimal"/>
+	<field name="v_ordreliquidatif_txippaydroit" class="java.math.BigDecimal"/>
+	<field name="v_ordreliquidatif_montantrevalorise" class="java.math.BigDecimal"/>
+	<field name="v_ordreliquidatif_coeff" class="java.math.BigDecimal"/>
+	<field name="v_ordreliquidatif_daterevalorisation" class="java.sql.Date"/>
+	<field name="v_ordreliquidatif_directive" class="java.lang.String"/>
+	<field name="v_ordreliquidatif_versement_id" class="java.lang.Integer"/>
+	<field name="v_ordreliquidatif_periodeversee" class="java.lang.String"/>
+	<field name="v_ordreliquidatif_montant" class="java.math.BigDecimal"/>
+	<field name="v_ordreliquidatif_dateversem" class="java.sql.Date"/>
+	<field name="v_ordreliquidatif_rente_libel" class="java.lang.String"/>
+	<field name="v_ordreliquidatif_etatrente" class="java.sql.Date"/>
+	<field name="v_ordreliquidatif_datedeb" class="java.sql.Date"/>
+	<field name="v_ordreliquidatif_datefin" class="java.sql.Date"/>
+	<field name="v_ordreliquidatif_cle" class="java.lang.String"/>
+	<field name="v_ordreliquidatif_iban" class="java.lang.String"/>
+	<group name="v_ordreliquidatif_versement_id">
+		<groupExpression><![CDATA[$F{v_ordreliquidatif_versement_id}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="785" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="3" y="361" width="549" height="1" uuid="fd2cc8ed-6644-4364-9a49-573aa579e23b"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="2" y="327" width="141" height="16" uuid="18438a41-f0d3-47e9-8c86-329bb86c4ebf"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Montant annuel de la rente :]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="### ###0.00">
+				<reportElement x="139" y="327" width="63" height="16" uuid="8862d527-674b-4364-9b75-a86e39c17b46"/>
+				<textElement textAlignment="Right">
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_ordreliquidatif_montantrevalorise}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="239" y="327" width="58" height="16" uuid="994cb08b-1627-4d4d-a9d4-4aad5fce50ba"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_ordreliquidatif_datedeb}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="202" y="327" width="35" height="16" uuid="de2e3bd1-f03d-473e-b6f6-e4af9610d2e1"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[   au ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="368" width="80" height="16" uuid="c7213700-cbf6-46cf-8f43-4d13bcce7d16"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Revalorisation  :]]></text>
+			</staticText>
+			<textField pattern="##0.00 %">
+				<reportElement x="81" y="368" width="44" height="16" uuid="d93c27ed-9635-45b4-8cff-cd6cb0d7533c"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_ordreliquidatif_coeff}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="143" y="368" width="53" height="16" uuid="986eca7d-3f76-41db-8d98-47802df9d761"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_ordreliquidatif_datedeb}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="125" y="368" width="18" height="16" uuid="df0913f0-3c2f-489c-b943-b019f308b9b9"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[au]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="##0.00" isBlankWhenNull="true">
+				<reportElement x="132" y="282" width="37" height="16" uuid="b738eceb-fac5-438f-8b5d-3254e985bec0"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_ordreliquidatif_txippaycause}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="65" y="257" width="67" height="16" uuid="44777bca-006f-4f33-94f6-d5e1b9829992"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_ordreliquidatif_dateaccident}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="245" y="257" width="92" height="16" uuid="72d9a77e-c58f-4fa8-bcd2-9f317ca1c262"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_ordreliquidatif_titulaire_libel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="377" y="257" width="131" height="16" uuid="adafb1bc-c874-41aa-917b-7800097cc51c"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_ordreliquidatif_grade_libel}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="282" width="128" height="16" uuid="70032b8c-0f13-4e6b-b17e-4ca4bae1b802"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Taux I.P.P. Ayant cause :  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="195" y="257" width="50" height="16" uuid="e40bc08e-1ab8-4de5-b0b2-53a0392bba15"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Titulaire : ]]></text>
+			</staticText>
+			<textField pattern="##0.00">
+				<reportElement x="325" y="282" width="39" height="16" uuid="fd179281-f1b9-4b68-b9e1-60a3948e1f25"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_ordreliquidatif_txippaydroit}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="4" y="257" width="62" height="16" uuid="ad8cf67c-d8f9-4cf7-a4e4-890e978b6860"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Accident du :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="339" y="257" width="38" height="16" uuid="92e116a6-3c2a-4eb4-846e-7f4f030fa719"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Grade :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="195" y="282" width="128" height="16" uuid="1f4f2fde-0e66-4223-a5cc-69f3c4227c9a"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Taux I.P.P. Ayant  droit  :]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="314" width="552" height="1" uuid="d4206c4c-e835-4ff6-8b84-89043562e099"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="49" y="152" width="46" height="16" uuid="7a5f0765-c4b5-44f9-81cf-d1a80bfb653f"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_ordreliquidatif_dossier}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="197" y="152" width="35" height="16" uuid="a7d17799-3f0a-47b3-aa1d-10e8084b12d6"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Rente :]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="172" width="552" height="1" uuid="7ecba522-0458-4075-a646-58c338146e58"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="3" y="152" width="48" height="16" uuid="1530f039-3ccd-4d1c-aa43-96c9817bb1b8"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Dossier :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="386" y="214" width="141" height="16" uuid="b82c9578-2f10-4e1d-97a5-0c7a2456e4fd"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_ordreliquidatif_ville}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="214" width="48" height="16" uuid="f9dcc781-2a12-484c-95c2-135a478eea08"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Adresse :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="337" y="215" width="48" height="16" uuid="058c7b94-0555-4e6a-8c82-45752c69ab8a"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_ordreliquidatif_codepostal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="337" y="192" width="48" height="16" uuid="e07ca5fe-563d-4662-8581-342f6c7e7a0d"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Ne(e) le :]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="385" y="192" width="78" height="16" uuid="aa0a96da-d572-4992-a225-381da63c6c4a"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_ordreliquidatif_datenaissance}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="234" y="152" width="169" height="16" uuid="a024b119-5e41-4072-8405-fb766ddfa6d4"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_ordreliquidatif_periodeversee}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="51" y="214" width="148" height="16" uuid="89b27c98-ab49-436b-910e-699f6fc8e904"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_ordreliquidatif_adresse1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="198" y="192" width="128" height="16" uuid="e1fa7fe1-9a6c-41c3-ad6c-6f5daf688425"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_ordreliquidatif_prenom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="192" width="169" height="16" uuid="d43e7d92-9346-43ac-9145-1052fcbe2cab"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_ordreliquidatif_nomfamille}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="199" y="214" width="72" height="16" uuid="4117e93a-5f8b-44d2-9520-f8ec4ad9c8c3"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_ordreliquidatif_adresse2}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="4" y="248" width="552" height="1" uuid="d1206e80-198d-4e2d-aece-7fb9ad742638"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="203" y="105" width="172" height="17" uuid="095c5f50-a206-4fd5-965b-b44bfbb57601"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_ordreliquidatif_periodeversee}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="154" y="70" width="258" height="20" backcolor="#99FF99" uuid="99c6b400-5278-4328-bfb7-edcb6ee81418"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="12" isBold="true" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ETAT LIQUIDATIF DE RENTE ACCIDENT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="53" y="0" width="198" height="18" uuid="60bbc47e-b1c9-488d-b650-204442245f55">
+					<property name="net.sf.jasperreports.export.pdf.tag.h2" value="full"/>
+				</reportElement>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Service Technique de l'Aviation Civile]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="1" y="141" width="552" height="1" uuid="6698039a-1703-4553-a0de-38cf48df1f4b"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="3" y="568" width="549" height="1" uuid="bcef0745-34f8-4f06-9592-3106c33b31a4"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="2" y="404" width="549" height="1" uuid="0b2cd1a2-75ed-4927-b168-d09767a4074e"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="201" y="368" width="64" height="16" uuid="157cc523-f952-42e4-aa8b-dfe3503416e9"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Application :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="264" y="368" width="182" height="16" uuid="6c781c99-d9a3-458b-b6f1-527e546df46c"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_ordreliquidatif_directive}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="447" y="368" width="18" height="16" uuid="20b37b7c-fe9c-45f1-8d7e-609b7be385d2"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[au ]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="465" y="368" width="72" height="16" uuid="72bbed5c-e3f7-47e0-9156-66b905a0e556"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_ordreliquidatif_datedeb}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="4" y="421" width="235" height="16" uuid="79db06c3-be71-4da5-b342-d9223fa71709"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ARRETE LE PRESENT ETAT A LA SOMME DE :]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="#####0.00 �uros">
+				<reportElement x="239" y="421" width="123" height="16" uuid="fce3d855-d391-488f-9daf-e5df57b7e6c2"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_ordreliquidatif_montant}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="3" y="479" width="549" height="1" uuid="5282b3de-1ef7-471d-93bb-fc1c59436672"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="4" y="493" width="150" height="16" uuid="3890fbb1-5715-4716-bc79-8f0eda3f10f9"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[DOMICILIATION BANCAIRE :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="15" y="512" width="47" height="20" uuid="03697ca6-b1d2-4865-8cc4-a4b74015f332"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Banque :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="50" y="512" width="145" height="20" uuid="033d8af3-0bc5-417a-b182-81cb2d84e49a"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_ordreliquidatif_banque}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="202" y="512" width="47" height="20" uuid="a27937e9-995b-49e0-ac8a-e5cf675ce88a"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Guichet]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="248" y="512" width="73" height="20" uuid="f7b3f8e7-33c3-46cc-aa11-e2b548ea6c40"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_ordreliquidatif_guichet}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="322" y="512" width="43" height="20" uuid="4123fc36-e904-4146-a075-bd83ab7b417c"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Compte ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="363" y="512" width="117" height="20" uuid="620058a3-601f-440e-911f-4d7da742102a"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_ordreliquidatif_compte}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="15" y="537" width="38" height="20" uuid="08e1fa1f-1224-4b02-bca6-1196f3304381"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[IBAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="483" y="512" width="21" height="20" uuid="3a0ee93a-82c1-4441-a38e-a0eb8e12cc45"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Cle]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="579" width="156" height="20" uuid="6930a734-a9ac-490a-864f-258cec6be0a5"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Mandate ce jour sous le numéro :]]></text>
+			</staticText>
+			<textField pattern="# #### ##0">
+				<reportElement x="160" y="579" width="71" height="20" uuid="4fefdc2f-3209-47c9-a411-ef1a6f1e5083"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_ordreliquidatif_versement_id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="614" width="113" height="20" uuid="76aa6d92-3002-4bbe-b847-64517995b437"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Bonneuil sur Marne, le ]]></text>
+			</staticText>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="116" y="614" width="159" height="20" forecolor="#000000" uuid="930c1613-ee71-4468-a94c-addeae185580"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="DejaVu Sans" size="10" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="340" y="653" width="167" height="20" uuid="b4b27892-b828-42b3-b6a0-ff0d1251665c"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Le Chef de la Division Finances]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="53" y="20" width="198" height="18" uuid="2cd00244-595f-461b-9745-6ab6f1bf68ec"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[31, avenue du maréchal Leclerc]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="53" y="40" width="198" height="18" uuid="33186676-01f3-4a2b-ae01-86a4b130d113"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[94380 BONNEUIL SUR MARNE CEDEX]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="503" y="512" width="37" height="20" uuid="087a5f00-2761-4fad-80ef-c31c435aff24"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_ordreliquidatif_cle}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="41" y="537" width="158" height="20" uuid="478343c3-ce9c-45f1-a82b-c92bdf47d9ae"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{v_ordreliquidatif_iban}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="RealSize" isUsingCache="false" onErrorType="Icon" evaluationTime="Auto">
+				<reportElement x="0" y="0" width="50" height="58" uuid="16c798e3-d3c5-4161-9bbf-54653a8f9636"/>
+				<imageExpression><![CDATA["./dgac-stac.png"]]></imageExpression>
+			</image>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="410" y="0" width="144" height="17" forecolor="#000000" uuid="4c9660b6-f457-4aab-83a5-6359fd256b1a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="10" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="166" y="282" width="18" height="16" uuid="20e7eb8a-af1a-45cc-8fbb-15acc19dbc85"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="361" y="282" width="18" height="16" uuid="0dcb305e-4a8c-45fa-a0be-17fe1751a2f0"/>
+				<textElement>
+					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[%]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

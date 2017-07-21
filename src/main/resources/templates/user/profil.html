@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html id="accueil" xmlns:th="http://www.thymeleaf.org" lang="fr" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+
+<!-- on insert un fragment ENTETE donc pas de repetition de code  la banniere est incluse ainsi que la barre de menus -->
+<div th:insert="fragments/header::copy"></div>
+
+
+<body class="bdy">
+
+<!-- on insert un fragment NAV PRINCIPALE donc pas de repetition de code  la banniere est incluse ainsi que la barre de menus -->
+<div th:insert="fragments/nav::copy"></div>
+
+
+<div id="principale" sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_SUPERVISOR')">
+
+    <div class="col-sm-4 fondForm" sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_USER','ROLE_SUPERVISOR')">
+
+        <h5>Ajouter/Modifier un profil</h5>
+        <h6 style="color:orangered;" th:if="${MESSAGE} != null" th:text="|${MESSAGE}|"> </h6>
+
+        <form id="form-id" th:action="@{/profil/add}" method="POST" th:object="${PROFIL}">
+            <table class="saisieTab">
+
+                <input  th:field="*{id}" type="hidden" readonly="true" visible="true"/>
+
+                <tr>
+                    <td><label>Nom</label></td>
+                    <td><input th:required="required" th:size="40" th:field="*{nom}" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="color:orangered;" th:if="${#fields.hasErrors('nom')}" th:text="#{rentes.rentes.valideName}"></td>
+                </tr>
+                <tr>
+                    <td><label>Role</label></td>
+                    <td><input th:required="required" th:size="40" th:field="*{role}" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="color:orangered;" th:if="${#fields.hasErrors('role')}" th:text="#{rentes.rentes.valideName}"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="btn btn-primary btn-xs" id="btnAjout" type="submit" th:disabled="${DISABLEBTN}" >Enregistrer</button>
+                        <button class="btn btn-primary btn-xs" type="reset" value="Reset" >Reset</button>
+                        <button class="btn btn-warning btn-xs" type="button" id="btn-raz" >Nouveau</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+
+    <div class="col-sm-6">
+        <h5>Liste des Profils</h5>
+
+        <div class="fondForm table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <td>Id </td>
+                    <td>Nom</td>
+                    <td>Role</td>
+                    <td>Utilisateurs</td>
+                    <td sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_SUPERVISOR')"> </td>
+                </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="prof : ${PROFILS}">
+
+                        <td><a th:href="@{/profil/get/{id} (id = ${prof.id})}" th:text="${prof.id}"></a></td>
+                        <td><a th:href="@{/profil/get/{id} (id = ${prof.id})}" th:text="${prof.nom}"></a></td>
+                        <td><a th:href="@{/profil/get/{id} (id = ${prof.id})}" th:text="${prof.role}"></a></td>
+                        <td>
+                            <ul id="dispo" size="2">
+                                <li th:each="usr : ${prof.users}" th:value="${usr.id}" th:text="${usr.nom}">l</li>
+                            </ul>
+                        </td>
+                        <td sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_SUPERVISOR')">
+                            <a th:href="@{/profil/sup/{id} (id = ${prof.id})}"><img th:src="@{/images/croixRouge2.jpg}"/></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-sm-2">
+        <!-- <p>  Vide pour cadrer dans la page uniquement car trop large</p>-->
+    </div>
+
+</div>
+
+<script th:src="@{/js/project.js}"></script>
+</body>
+</html>

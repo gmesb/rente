@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+
+    <body>
+
+        <div id="affmessage" th:fragment="messag">
+
+            <div class="fondForm" type="hidden"  th:hidden="${HiddenAffiche}" >
+                <h5 style="color:orangered;">  <a th:if="${DOSSIER} != null" th:text="|Dossier en cours : ${DOSSIER}|"> l</a> </h5>
+            </div>
+
+        </div>
+    </body>
+</html>

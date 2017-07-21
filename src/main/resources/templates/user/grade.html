@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html id="accueil" xmlns:th="http://www.thymeleaf.org" lang="fr" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+
+<!-- on insert un fragment ENTETE donc pas de repetition de code  la banniere est incluse ainsi que la barre de menus -->
+<div th:insert="fragments/header::copy"></div>
+
+
+<body class="bdy">
+
+<!-- on insert un fragment NAV PRINCIPALE donc pas de repetition de code  la banniere est incluse ainsi que la barre de menus -->
+<div th:insert="fragments/nav::copy"></div>
+
+
+<div id="principale" sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_SUPERVISOR')">
+
+
+    <div class="col-sm-4 fondForm table-responsive" sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_USER','ROLE_SUPERVISOR')">
+
+        <h5>Ajouter/Modifier un élément GRADE</h5>
+        <h6 style="color:orangered;" th:if="${MESSAGE} != null" th:text="|${MESSAGE}|"> </h6>
+
+        <form id="form-id" th:action="@{/grade/add}" method="POST" th:object="${GRADE}">
+            <table class="saisieTab">
+
+                <input  th:field="*{id}" type="hidden" readonly="true" visible="true"/>
+
+                <tr>
+                    <td>Désignation</td>
+                    <td><input class="reduce" th:required="required" th:size="40" th:field="*{libel}" placeholder="Saisir la désignation" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="color:orangered;" th:if="${#fields.hasErrors('libel')}" th:text="#{rentes.rentes.valideName}"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="btn btn-primary btn-xs" id="btnAjout" type="submit" th:disabled="${DISABLEBTN}" >Enregistrer</button>
+                        <button class="btn btn-primary btn-xs" type="reset" value="Reset" >Reset</button>
+                        <button class="btn btn-warning btn-xs" type="button" id="btn-raz" >Nouveau</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div class="col-sm-4 fondForm">
+
+        <h5>Liste des types Grades</h5>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Désignation</td>
+                    <td sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_SUPERVISOR')"> </td>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="grade : ${GRADES}">
+
+                    <td><a th:href="@{/grade/get/{id} (id = ${grade.id})}" th:text="${grade.id}"></a></td>
+                    <td><a th:href="@{/grade/get/{id} (id = ${grade.id})}" th:text="${grade.libel}"></a></td>
+                    <td sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_SUPERVISOR')">
+                        <a th:href="@{/grade/sup/{id} (id = ${grade.id})}"><img th:src="@{/images/croixRouge2.jpg}"/></a>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-sm-4">
+        <!-- <p>  Vide pour cadrer dans la page uniquement car trop large</p>-->
+    </div>
+
+</div>
+
+<script th:src="@{/js/project.js}"></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html id="accueil" xmlns:th="http://www.thymeleaf.org" lang="fr" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+
+<!-- on insert un fragment ENTETE donc pas de repetition de code  la banniere est incluse ainsi que la barre de menus -->
+<div th:insert="fragments/header::copy"></div>
+
+
+<body class="bdy">
+
+<!-- on insert un fragment NAV PRINCIPALE donc pas de repetition de code  la banniere est incluse ainsi que la barre de menus -->
+<div th:insert="fragments/nav::copy"></div>
+
+
+
+<div id="principale" sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_SUPERVISOR')">
+
+    <div class="col-sm-4 fondForm  table-responsive" sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_USER','ROLE_SUPERVISOR')">
+
+        <h5>Ajouter/Modifier un utilisateur</h5>
+        <h6 style="color:orangered;" th:if="${MESSAGE} != null" th:text="|${MESSAGE}|"> </h6>
+
+        <form id="form-id" th:action="@{/user/add}" method="POST" th:object="${USER}" >
+
+            <table class="saisieTab">
+
+                <input  th:field="*{id}" type="hidden" readonly="true" visible="true"/>
+
+                <tr>
+                    <td>Identifiant</td>
+                    <td><input  th:required="required" th:size="16" th:field="*{identif}" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="color:orangered;" th:if="${#fields.hasErrors('identif')}" th:text="#{user.user.identif}"></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input th:required="required" th:size="16" th:type="password" th:field="*{mdp}" /></td>
+                 </tr>
+                <tr>
+                    <td></td>
+                    <td style="color:orangered;" th:if="${#fields.hasErrors('mdp')}" th:text="#{user.user.mdp}"></td>
+                </tr>
+                <tr>
+                    <td>Nom</td>
+                    <td><input th:required="required" th:size="30" th:field="*{nom}" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="color:orangered;" th:if="${#fields.hasErrors('nom')}" th:text="#{user.user.nom}"></td>
+                </tr>
+                <tr>
+                    <td>Prénom</td>
+                    <td><input th:required="required" th:size="30" th:field="*{prenom}" /></td>
+                 </tr>
+                <tr>
+                    <td></td>
+                    <td style="color:orangered;" th:if="${#fields.hasErrors('prenom')}" th:text="#{user.user.prenom}"></td>
+                </tr>
+                <tr>
+                    <td>Téléphone</td>
+                    <td><input th:size="20" th:field="*{telephone}" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                   <td style="color:orangered;" th:if="${#fields.hasErrors('telephone')}" th:text="#{user.user.telephone}"></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input  th:field="*{email}" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                   <td style="color:orangered;" th:if="${#fields.hasErrors('email')}" th:text="#{user.user.email}"></td>
+                </tr>
+                <tr>
+                    <td>Etablissement </td>
+                    <td><select th:required="required" th:field="*{etablissement}">
+                            <option th:each ="etabliss : ${ETABLISSEMENTS}" th:value = "${etabliss.id}" th:text="${etabliss.nom}"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Actif</td>
+                    <td>
+                        <div>
+                            <input th:type="radio" th:value="true" th:checked="checked" th:field="*{actif}" />Oui
+                            <input th:type="radio" th:value="false" th:field="*{actif}" />Non
+                        </div>
+                    </td>
+                    <td th:if="${#fields.hasErrors('actif')}" th:text="#{user.user.actif}"></td>
+                </tr>
+                <tr>
+                    <td>Profils </td>
+                    <td><select th:required="required" th:field="*{profils}" >
+                             <option  th:each="prof : ${PROFILS}" th:value="${prof.id}" th:text="${prof.nom}">l</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <button class="btn btn-primary btn-xs" id="btnAjout" type="submit" th:disabled="${DISABLEBTN}" >Enregistrer</button>
+                        <button class="btn btn-primary btn-xs" type="reset" value="Reset" >Reset</button>
+                        <button class="btn btn-warning btn-xs" type="button" id="btn-raz" >Nouveau</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+
+    <div class="col-sm-7">
+        <h5>Liste des utilisateurs</h5>
+        <div class="fondForm table-responsive">
+
+            <table class="table table-striped">
+                <thead>
+
+                    <tr>
+                        <td>Id </td>
+                        <td>Identifiant</td>
+                        <td>Nom</td>
+                        <td>Prénom</td>
+                        <td>Téléphone</td>
+                        <td>Email</td>
+                        <td>Actif</td>
+                        <td>Profil</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr th:each="user: ${USERS}">
+
+                        <td><a th:href="@{/user/get/{iduser} (iduser = ${user.id})}" th:text="${user.id}"></a></td>
+                        <td><a th:href="@{/user/get/{iduser} (iduser = ${user.id})}" th:text="${user.identif}"></a></td>
+                        <td><a th:href="@{/user/get/{iduser} (iduser = ${user.id})}" th:text="${user.nom}"></a></td>
+                        <td><a th:href="@{/user/get/{iduser} (iduser = ${user.id})}" th:text="${user.prenom}"></a></td>
+                        <td><a th:href="@{/user/get/{iduser} (iduser = ${user.id})}" th:text="${user.telephone}"></a></td>
+                        <td><a th:href="@{/user/get/{iduser} (iduser = ${user.id})}" th:text="${user.email}"></a></td>
+                        <td th:text="${user.actif}">1</td>
+                        <td>
+                            <ul id="dispo" th:size="3" >
+                                <p th:each="prof : ${user.profils} " th:value="${prof.id}" th:text="${prof.nom}">l</p>
+                            </ul>
+                        </td>
+                        <td sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_SUPERVISOR')">
+                            <a th:href="@{/user/delete/{iduser} (iduser = ${user.id})}"> <img th:src="@{/images/croixRouge2.jpg}"/></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="/js/project.js" th:src="@{/js/project.js}"></script>
+</body>
+</html>

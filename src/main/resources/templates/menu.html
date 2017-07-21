@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html id="accueil" xmlns:th="http://www.thymeleaf.org" lang="fr" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<div th:insert="fragments/header::copy"></div>
+<body>
+    <div th:insert="fragments/nav::copy">toto</div>
+    <div class="container-fluid text-center">
+        <div class="row content">
+            <div class="col-sm-2 sidenav">
+                <p><a href="http://www.stac.aviation-civile.gouv.fr/">Le site du STAC</a></p>
+                <p><a href="http://www.stac.aviation-civile.gouv.fr/">L'Intranet</a></p>
+                <p><a href="http://www.libelaero.fr/">Librairie electronique</a></p>
+                <p><a href="https://mail.lfpo.aviation-civile.gouv.fr/">Messagerie</a></p>
+                <p><a href="https://www.legifrance.gouv.fr/">Droit communautaire</a></p>
+            </div>
+            <div class="col-sm-8 text-left">
+                <h1>Bienvenue !</h1>
+                <p>Cette application regroupe la gestion, les calculs et les versements des sommes dûes aux membres et anciens membres du personnel prétendant recevoir les rentes calculées.
+                </p>
+                <hr>
+                <h3>Le S.T.A.C.</h3>
+                <p>Le Service Technique de l'Aviation Civile est le gestionnaire de l'application via la Division des Personnels.</p>
+                <hr>
+            </div>
+            <div class="col-sm-2 sidenav">
+                <div class="well">
+                    <h6 style="color:orangered;"> <a th:if="${DOSSIER} != null" th:text="|Dossier : ${DOSSIER}|"> </a> </h6>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:insert="fragments/footer::copy"></div>
+</body>
+</html>

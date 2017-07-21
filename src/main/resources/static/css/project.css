@@ -1,0 +1,347 @@
+
+#rentesDuRentier{
+	/* visibility:hidden; */
+}
+
+#saisieRente{
+	/* visibility: hidden; */
+}
+
+.tailledate {
+	width:150px;
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	line-height: 22px;
+	color: #000000;
+	font-size: 14px;
+	margin-left: 0px;
+	margin-top: 0px;
+}
+
+.bdyLog {
+	font-family: Arial, Helvetica, sans-serif;
+	line-height: 24px;
+	color: #000000;
+	font-size: 14px;
+	background-color: #e8ece0;
+	margin-left: 0px;
+	margin-top: 0px;
+}
+
+.bdy {
+	font-family: Arial, Helvetica, sans-serif;
+	line-height: 17px;
+	color: #000000;
+	font-size: 13px;
+	background-color: #e8ece0;
+	margin:0;
+	margin-left: 0px;
+	margin-top: 3px;
+	padding: 0;
+	background: url(static/images/fondSTAC.png) no-repeat center fixed;
+	-webkit-background-size: cover; /* pour Chrome et Safari */
+	-moz-background-size: cover; /* pour Firefox */
+	-o-background-size: cover; /* pour Opera */
+	background-size: cover; /* version standardisée */
+}
+
+.saisie{
+	padding-top:40px  ;
+	margin-left: 10px;
+}
+
+#passwd {
+	background-color: #f5f9ee;
+	border-width:1px;
+	border-style:solid;
+	border-color:#7E907B;
+	border-radius: 8px;
+	box-shadow: 5px 5px 0px #acb8ac;
+	width:30%;
+	padding: 50px;
+	margin: 12% 30%;
+	border-spacing:30px;      	  /*  idem border-collapse*/
+}
+
+.fondForm {
+	background:url(static/images/fondForm.png) no-repeat center fixed;
+	background-color: #f5f9ee;
+	border-color:#7E907B;
+	border-radius: 5px;
+	box-shadow: 4px 4px 0px rgba(189, 225, 207, 0.24);
+	padding-left: 6px;
+	border-width:1px;
+	border-style:solid;
+	margin: 6px 0px 12px 3px;
+}
+
+.menu {
+	background-color: azure;
+	border-width:1px;
+	border-style:solid;
+	border-color:black;
+	width:20%;
+	padding: 30px;
+	margin: 12% 45%;
+	border-spacing:30px;      	  /*  idem border-collapse*/
+}
+
+#accueil{
+	font-family: Arial, Helvetica, sans-serif;
+	line-height: 22px;
+	color: #000000;
+	font-size: 14px;
+	background-color: #f5f9ee;
+	margin:0;
+	padding: 0;
+	background: url(static/images/fondRentes.png) no-repeat center fixed;
+	-webkit-background-size: cover; /* pour Chrome et Safari */
+	-moz-background-size: cover; /* pour Firefox */
+	-o-background-size: cover; /* pour Opera */
+	background-size: cover; /* version standardisée */
+}
+.url{
+	text-decoration: none;
+	color : #000000;
+
+}
+a:hover {
+	color: #ff9836;
+	text-decoration:none;
+}
+
+.listeTab {
+	 border-width:1px;
+	 border-style:solid;
+	 border-color:black;
+	 border-spacing:0;      	  /*  idem border-collapse*/
+	 border-collapse:collapse;
+	 width:auto;
+ }
+
+.table>tbody>tr>td, .table>tbody>tr>th,
+.table>thead>tr>td, .table>thead>tr>th,
+.table>tfoot>tr>td, .table>tfoot>tr>th{
+	padding:4px;
+	line-height: 1.3;
+	vertical-align: top;
+	border-top: 1px solid #ddd;
+}
+
+.listeTab>tbody>tr>td, .listeTab>thead>tr>td {
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 3px;
+	height: 24px;
+	border-color: darkgreen;
+	background-color: #ffffff;
+	padding: 0px 2px 0px 2px;
+	width: auto;
+	border:solid 1px #336699;
+
+}
+.saisieTab tr>td>input{
+	border-width:1px;
+	border-style:solid;
+	border-color:#1f3abf;
+	border-spacing:1px;      	  /*  idem border-collapse*/
+	height: 28px;
+	margin: 1px;
+	padding-left: 4px;
+}
+.saisieTab tr>td>select{
+	border-width:1px;
+	border-style:solid;
+	border-color:#1f3abf;
+	border-spacing:1px;      	  /*  idem border-collapse*/
+	height: 26px;
+	margin: 1px;
+	border-radius: 3px;
+	padding-left: 4px;
+}
+
+.saisieTab {
+	line-height: 1.2;
+	padding: 4px;
+}
+
+.boxmenu{
+	border-width:1px;
+	border-style:solid;
+	border-color:black;
+	width: 350px;
+	margin: 20px 0px 20px 30px;
+	padding-left: 10px;
+}
+input:invalid{
+	border-radius: 3px;
+	height: 29px;
+}
+input:valid{
+	border-radius: 3px;
+	height: 29px;
+}
+
+.chinput{
+	border-radius: 3px;
+	height: 29px;
+	margin: 6px;
+}
+
+.marge5 {
+	margin-left: 5em;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 1027px) {
+
+	.saisieTab tr>td>input{
+		border-width:1px;
+		border-style:solid;
+		border-color:#1f3abf;
+		border-spacing:1px;      	  /*  idem border-collapse*/
+		height: 28px;
+		margin: 1px;
+		width: 90%;
+		padding-left: 2px;
+	}
+	.radio-inline{
+		height: 12px;
+		width:  12px;
+	}
+
+	.marge5 {
+		margin-left: 0em;
+	}
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 867px) {
+	.sidenav {
+		height: auto;
+		padding: 15px;
+	}
+	.row.content {height:auto;}
+
+	.marge5 {
+		margin-left: 0em;
+	}
+}
+
+@media (max-width: 767px) {
+	.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+		color: #777;
+	}
+
+	.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+	.navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+		color: #333;
+	}
+}
+
+/*--------------------------------------------------------------------------- BOOTSTRAP --------
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbarP {
+	margin-bottom: 0;
+	border-radius: 0;
+	color:#fafdff;
+}
+.navbar-nav>li>a{
+	color : #1d2e06;
+	font-size : 13px;
+}
+.dropdown-menu>li>a{
+	color: #2c77b9;
+	font-size : 13px;
+}
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {height: 480px}
+
+/* Set gray background color and 100% height */
+.sidenav {
+	padding-top: 20px;
+	background-color: #f1f1f1;
+	height: 100%;
+}
+
+/* Set black background color, white text and some padding */
+footer {
+	background-color: #555;
+	color: white;
+	padding: 15px;
+}
+
+
+/* Classe principale de la barre de navigation */
+.navbar-defaultP {
+	/* Couleur de fond de la barre de navigation */
+	background-color: #6ab4b0;
+	border-color: #7da3a1;
+	color:#fafdff;
+}
+/* Couleur des titres affichés dans la barre */
+.navbar-default .navbar-brand {
+	color: #777;
+}
+/* Couleur utilisée lors du passage de la souris sur un titre de la barre */
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+	color: #5E5E5E;
+}
+/* Couleur utilisée pour les liens */
+.navbar-default .navbar-nav > li > a {
+	color: #777;
+}
+/* Couleur utilisée pour les liens lorsque la souris passe dessus */
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+	color: #333;
+}
+/* Couleur utilisée pour le lien actif (celui qui est affiché sur la page) */
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+	color: #555;
+	background-color: #E7E7E7;
+}
+/* Couleur utilisée pour un menu dépliant lorsqu'il est ouvert */
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+	color: #555;
+	background-color: #e6f1d1;
+}
+/* Caret */
+.navbar-default .navbar-nav > .dropdown > a .caret {
+	border-top-color: #777;
+	border-bottom-color: #777;
+}
+.navbar-default .navbar-nav > .dropdown > a:hover .caret,
+.navbar-default .navbar-nav > .dropdown > a:focus .caret {
+	border-top-color: #333;
+	border-bottom-color: #333;
+}
+.navbar-default .navbar-nav > .open > a .caret,
+.navbar-default .navbar-nav > .open > a:hover .caret,
+.navbar-default .navbar-nav > .open > a:focus .caret {
+	border-top-color: #555;
+	border-bottom-color: #555;
+}
+/* Version mobile, le menu devient une icône qui déroule une liste avec le menu en vertical */
+.navbar-default .navbar-toggle {
+	border-color: #DDD;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+	background-color: #DDD;
+}
+.navbar-default .navbar-toggle .icon-bar {
+	background-color: #CCC;
+}
+
+
+
+
+/*--------------------------------------------------------------------------- BOOTSTRAP --------

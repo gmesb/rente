@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html id="accueil" xmlns:th="http://www.thymeleaf.org" lang="fr" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+
+<div th:fragment="copy" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<header>
+    <img th:src="@{/images/banniere4.png}" class="img-responsive" width="100%" height="140px" />
+</header>
+
+
+<nav class="navbarP navbar-defaultP">
+    <div class="container-fluid">
+
+        <a class="navbar-header">
+            <div class="navbar-brand">
+                <form method="post" th:action="@{/logout}">
+                    <span><a th:href="@{/login/menu}"><img th:src="@{/images/icone-dgac.png}"/><input class="btn btn-primary" type="submit" value="Logout"/></a></span>
+                </form>
+            </div>
+        </a>
+
+        <div class="collapse navbar-collapse" id="myNavbar">
+               	
+            <ul class="nav navbar-nav">
+
+                    <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Rentes et Rentiers
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/rentier/list}">Gestion des rentiers</a></li>
+                        <li><a th:href="@{/rentier/listnomForRente/{nomrentier}(nomrentier='px3')}">Gestion des rentes</a></li>
+                        <li><a th:href="@{/rentier/listnomForRevalorisation/{nomrentier}(nomrentier='px3')}">Faire une revalorisation de rente</a></li>
+                        <li><a th:href="@{/rentier/listnomForVersement/{nomrentier}(nomrentier='px3')}">Effectuer un versement</a></li>
+                        <li><a th:href="@{/pdfFiles/versement}">Générer les ordres de versement (PDF)</a></li>
+                        <li><a th:href="@{/versement/boucle}">Effectuer le paiement global</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Activité périodique
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+						<li><a th:href="@{/revalorisation/list}">Enregistrer les revalorisations</a></li>
+                        <li><a th:href="@{/renterevalorisee/boucle}">Appliquer la revalorisation en boucle</a></li>
+                        <li><a th:href="@{/rentier/listnomForPreuvevie/{nomrentier}(nomrentier='px3')}">Saisir les justificatifs de vie</a></li>
+                        <li><a th:href="@{/preuvevie/courrier}">Fichier pour publipostage Justificatifs-vie</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Paramètres
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/versemtype/list}">Gestion des modes de versement</a></li>
+                        <li><a th:href="@{/preuve/list}">Gérer liste des preuves de vie</a></li>
+                        <li><a th:href="@{/grade/list}">Gestion des grades</a></li>
+                        <li><a th:href="@{/titulaire/list}">Gérer liste titulaires</a></li>
+                    </ul>
+                </li>
+
+                <li sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_SUPERVISOR')" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Administration
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/imprimer/budget}">Générer l'état du budget prévisionnel (PDF)</a></li>
+                        <li><a th:href="@{/user/list/{choix}(choix='US')}">Gérer les utilisateurs</a></li>
+                        <li><a th:href="@{/profil/list}">Gérer les Profils</a></li>
+                        <li><a th:href="@{/etablissement/list}">Gestion de l'Etablissement</a></li>
+                    </ul>
+                </li>
+
+                <li><a th:href="@{/user/list/{choix}(choix = 'PW')} ">Changer mot de passe</a></li>
+            </ul>
+
+          <!--  <ul class="nav navbar-nav navbar-right">
+                <li>  <a href="#"><span class="glyphicon glyphicon-log-in"></span>Sortie</a> </li>
+            </ul> -->
+                       
+        </div>
+    </div>
+</nav>
+</div>
+
+</html>

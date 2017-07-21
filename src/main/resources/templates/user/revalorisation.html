@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html id="accueil" xmlns:th="http://www.thymeleaf.org" lang="fr" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<!-- on insert un fragment ENTETE donc pas de repetition de code  la banniere est incluse ainsi que la barre de menus -->
+<div th:insert="fragments/header::copy"></div>
+
+
+<body class="bdy">
+
+<!-- on insert un fragment NAV PRINCIPALE donc pas de repetition de code  la banniere est incluse ainsi que la barre de menus -->
+<div th:insert="fragments/nav::copy"></div>
+
+
+<div id="principale" sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_USER','ROLE_SUPERVISOR')">
+
+    <div class="col-sm-4 fondForm">
+
+        <h5>Enregistrer/Modifier une revalorisation</h5>
+        <h6 style="color:orangered;" th:if="${MESSAGE} != null" th:text="|${MESSAGE}|"> </h6>
+
+
+        <form id="form-id" th:action="@{/revalorisation/add}" method="POST" th:object="${REVALORISATION}">
+
+            <table class="saisieTab">
+
+                <input  th:field="*{id}" type="hidden" readonly="true" visible="true"/>
+
+                <tr>
+                    <td><label>Désignation</label></td>
+                    <td><input th:required="required" th:size="30" th:field="*{libel}" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="color:orangered;" th:if="${#fields.hasErrors('libel')}" th:text="#{rentes.rentes.valideName}"></td>
+                </tr>
+                <tr>
+                    <td><label>Coefficient</label></td>
+                    <td><input th:required="required" th:size="6" th:field="*{coeff}" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="color:orangered;" th:if="${#fields.hasErrors('coeff')}" th:text="#{rentes.rentes.valideName}"></td>
+                </tr>
+                <tr>
+                    <td><label>Date Valeur (AAAA-MM-JJ)</label></td>
+                    <td><input th:type="date" class="form-control tailledate" th:required="required" th:size="15" th:field="*{daterevalorisation}" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="color:orangered;" th:if="${#fields.hasErrors('daterevalorisation')}" th:text="#{rentes.rentes.valideName}"></td>
+                </tr>
+                <tr>
+                    <td><label>Directive</label></td>
+                    <td><input th:required="required" th:size="30" th:field="*{directive}" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="color:orangered;" th:if="${#fields.hasErrors('directive')}" th:text="#{rentes.rentes.valideName}"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="btn btn-primary btn-xs" id="btnAjout" type="submit" th:disabled="${DISABLEBTN}" >Enregistrer</button>
+                        <button class="btn btn-primary btn-xs" type="reset" value="Reset" >Reset</button>
+                        <button class="btn btn-warning btn-xs" type="button" id="btn-raz" >Nouveau</button>
+                        <a th:href="@{/renterevalorisee/boucle}" class="btn btn-danger btn-xs" type="button" id="btn-rel" >Revaloriser</a>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+
+    <div class="col-sm-7">
+
+        <h5>Liste des revalorisations enregistrées</h5>
+
+        <div class="fondForm table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td>Id</td>
+                        <td>Désignation</td>
+                        <td>Coefficient</td>
+                        <td>Date Valeur</td>
+                        <td>Directive</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="reval : ${REVALORISATIONS}">
+
+                        <td><a th:href="@{/revalorisation/get/{id} (id = ${reval.id})}" th:text="${reval.id}"></a></td>
+                        <td><a th:href="@{/revalorisation/get/{id} (id = ${reval.id})}" th:text="${reval.libel}"></a></td>
+                        <td><a th:href="@{/revalorisation/get/{id} (id = ${reval.id})}" th:text="${reval.coeff}"></a></td>
+                        <td><a th:href="@{/revalorisation/get/{id} (id = ${reval.id})}" th:text="${#dates.format(reval.daterevalorisation,'dd/MM/yyyy')}"></a></td>
+                        <td><a th:href="@{/revalorisation/get/{id} (id = ${reval.id})}" th:text="${reval.directive}"></a></td>
+                        <td sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_SUPERVISOR')">
+                            <a th:href="@{/revalorisation/sup/{id} (id = ${reval.id})}"><img th:src="@{/images/croixRouge2.jpg}"/></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/js/project.js}"></script>
+</body>
+</html>

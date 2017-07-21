@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+    <head>
+        <title>Spring Security Example</title>
+    </head>
+    <body>
+        <h1>Welcome 2222!</h1>
+         <p>Click <a th:href="@{/hello}">here</a> to see a greeting.</p>
+         <p sec:authorize="hasAnyAuthority('USER','ADMIN')">Pour tous les USER et Admin</p>
+         <p sec:authorize="hasAuthority('ADMIN')">Pour les ADMIN</p>
+         <p sec:authorize="isAuthenticated()">Pour tous les utilisateurs </p>
+    </body>
+</html>

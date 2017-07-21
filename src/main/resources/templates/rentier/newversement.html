@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html id="accueil" xmlns:th="http://www.thymeleaf.org" lang="fr" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+
+<!-- on insert un fragment ENTETE donc pas de repetition de code  la banniere est incluse ainsi que la barre de menus -->
+<div th:insert="fragments/header::copy"></div>
+
+
+<body class="bdy">
+
+<!-- on insert un fragment NAV PRINCIPALE donc pas de repetition de code  la banniere est incluse ainsi que la barre de menus -->
+<div th:insert="fragments/nav::copy"></div>
+
+
+<div id="principale">
+    <div class="col-sm-8">
+        <div class="fondForm table-responsive">
+            <h5>Liste des Rentiers</h5>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Id</td>
+                        <td>Nom de famille</td>
+                        <td>Nom marital</td>
+                        <td>Prénom</td>
+                        <td>Né(e) le</td>
+                        <td>Fin droits</td>
+                        <td>Titulaire</td>
+                        <td>Grade</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                   <!-- <tr><a class="url" th:href="@{/rentier/get/{id} (id = ${rentier.id})} "th:each="rentier: ${RENTIERS}"></a>-->
+                   <tr onmouseover="this.style.backgroundColor='#d3e2d5';" onmouseout="this.style.backgroundColor='white';"
+                       th:each="rentier: ${RENTIERS}">
+
+                         <td sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                             <a th:href="@{/rente/listRentes/{id}/{choix} (id = ${rentier.id},choix='addversem')}" th:text="${rentier.id}"></a>
+                         </td>
+                         <td><a th:href="@{/rente/listRentes/{id}/{choix} (id = ${rentier.id},choix='addversem')}" th:text="${rentier.nomfamille}"></a></td>
+                         <td><a th:href="@{/rente/listRentes/{id}/{choix} (id = ${rentier.id},choix='addversem')}" th:text="${rentier.nommarital} "></a></td>
+                         <td><a th:href="@{/rente/listRentes/{id}/{choix} (id = ${rentier.id},choix='addversem')}" th:text="${rentier.prenom}"></a></td>
+                         <td><a th:href="@{/rente/listRentes/{id}/{choix} (id = ${rentier.id},choix='addversem')}" th:text="${#dates.format(rentier.datenaissance,'dd/MM/yyyy')}"></a></td>
+                         <td><a th:href="@{/rente/listRentes/{id}/{choix} (id = ${rentier.id},choix='addversem')}" th:text="${#dates.format(rentier.findroit,'dd/MM/yyyy')}"></a></td>
+                         <td><a th:href="@{/rente/listRentes/{id}/{choix} (id = ${rentier.id},choix='addversem')}" th:text="${rentier.titulaire.libel}"></a></td>
+                         <td><a th:href="@{/rente/listRentes/{id}/{choix} (id = ${rentier.id},choix='addversem')}" th:text="${rentier.grade.libel}"></a></td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="fondForm table-responsive" th:hidden="${HiddenRente}" >
+
+           <h5>Rentes accordées à : <a th:text="${IDENTRENTIER}" ></a></h5>
+
+           <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Id</td>
+                        <td>Désignation</td>
+                        <td>Consolidation</td>
+                        <td>Tx Cause</td>
+                        <td>Tx Droit</td>
+                        <td>Rente initiale</td>
+                        <td>Etat</td>
+                        <td>Type Versement</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="rente: ${RENTES}" >
+                        <td sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                            <a th:href="@{/renterevalorisee/versemRenteReval/{id}/{choix} (id=${rente.id},choix='addversem')}" th:text="${rente.id}"></a>
+                        </td>
+                        <td><a th:href="@{/renterevalorisee/versemRenteReval/{id}/{choix} (id=${rente.id},choix='addversem')}" th:text="${rente.libel}"></a></td>
+                        <td><a th:href="@{/renterevalorisee/versemRenteReval/{id}/{choix} (id=${rente.id},choix='addversem')}" th:text="${#dates.format(rente.dateconsolidation,'dd/MM/yyyy')}"></a></td>
+                        <td><a th:href="@{/renterevalorisee/versemRenteReval/{id}/{choix} (id=${rente.id},choix='addversem')}" th:text="${#numbers.formatDecimal(rente.txippaycause,1,2,'DEFAULT')}"></a></td>
+                        <td><a th:href="@{/renterevalorisee/versemRenteReval/{id}/{choix} (id=${rente.id},choix='addversem')}" th:text="${#numbers.formatDecimal(rente.txippaydroit,1,2,'DEFAULT')}"></a></td>
+                        <td><a th:href="@{/renterevalorisee/versemRenteReval/{id}/{choix} (id=${rente.id},choix='addversem')}" th:text="${#numbers.formatDecimal(rente.mntrenteinitial,1,2,'DEFAULT')}"></a></td>
+                        <td><a th:href="@{/renterevalorisee/versemRenteReval/{id}/{choix} (id=${rente.id},choix='addversem')}" th:text="${#dates.format(rente.etatrente,'dd/MM/yyyy')}"></a></td>
+                        <td><a th:href="@{/renterevalorisee/versemRenteReval/{id}/{choix} (id=${rente.id},choix='addversem')}" th:text="${rente.versemtype.libel}"></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="fondForm table-responsive" th:hidden="${HiddenReval}">
+            <h5>Revalorisations pour la rente : <a th:text="${DESRENTE}" ></a></h5>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Id</td>
+                        <td>Lancement</td>
+                        <td>Date début</td>
+                        <td>Date fin</td>
+                        <td>Mnt revalorisé</td>
+                        <td>Directive</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="revalo : ${RENTEREVALORISEES}">
+
+                    <td sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                        <a th:href="@{/versement/listVersem/{idRevalo} (idRevalo = ${revalo.id})} "th:text="${revalo.id}"></a>
+                    </td>
+                    <td><a th:href="@{/versement/listVersem/{idRevalo} (idRevalo = ${revalo.id})} "th:text="${#dates.format(revalo.datelancement,'dd/MM/yyyy')}"></a></td>
+                    <td><a th:href="@{/versement/listVersem/{idRevalo} (idRevalo = ${revalo.id})} "th:text="${#dates.format(revalo.datedeb,'dd/MM/yyyy')}"></a></td>
+                    <td><a th:href="@{/versement/listVersem/{idRevalo} (idRevalo = ${revalo.id})} "th:text="${#dates.format(revalo.datefin,'dd/MM/yyyy')}"></a></td>
+                    <td><a th:href="@{/versement/listVersem/{idRevalo} (idRevalo = ${revalo.id})} "th:text="${#numbers.formatDecimal(revalo.montantrevalorise,1,2,'DEFAULT')}"></a></td>
+                   <!-- <td>
+                        <ul>
+                            <a th:href="@{/versement/listVersem/{idRevalo} (idRevalo = ${revalo.id})}" th:text="${revalo.revalorisation.directive}" ></a>
+                            <a th:href="@{/versement/listVersem/{idRevalo} (idRevalo = ${revalo.id})}" th:text="${' - '+ revalo.revalorisation.coeff}"></a>
+                        </ul>
+                    </td>-->
+                    <td>
+                        <a th:href="@{/versement/listVersem/{idRevalo} (idRevalo = ${revalo.id})}" th:text="${revalo.revalorisation.directive}" th.text="${revalo.revalorisation.coeff}" ></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+    <div class="col-sm-4" type="hidden" th:hidden="${HiddenSaisie}" >
+
+
+        <div class="fondForm table-responsive">
+            <h5>Versements : <a th:text="${DESRENTE}" ></a></h5>
+
+             <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Id</td>
+                        <td>Période versée</td>
+                        <td>Jour Max payé</td>
+                        <td>Montant</td>
+                     </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="versement: ${VERSEMENTS}">
+                    <td sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                        <a th:href="@{/versement/getnewversem/{id} (id = ${versement.id})}" th:text="${versement.id}"></a>
+                    </td>
+                    <td><a th:href="@{/versement/getnewversem/{id} (id = ${versement.id})}" th:text="${versement.periodeversee}"></a></td>
+                    <td><a th:href="@{/versement/getnewversem/{id} (id = ${versement.id})}" th:text="${#dates.format(versement.dernierjourpaye,'dd/MM/yyyy')}"></a></td>
+                    <td><a th:href="@{/versement/getnewversem/{id} (id = ${versement.id})}" th:text="${#numbers.formatDecimal(versement.montant,1,2,'DEFAULT')}"></a></td>
+                    <td sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_SUPERVISOR')">
+                        <a th:href="@{/versement/delete/{id} (id = ${versement.id})}"><img th:src="@{/images/croixRouge2.jpg}"/></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div id="saisieRente" class="fondForm" sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_USER','ROLE_SUPERVISOR')">
+
+            <h5>Saisie/Modif d'un versement</h5>
+            <h6 style="color:orangered;" th:if="${MESSAGE} != null" th:text="|${MESSAGE}|"> </h6>
+
+
+            <form id="form-id" action="#" th:action="@{/versement/add}" method="POST" th:object="${VERSEMENT}" >
+
+                <table class="saisieTab">
+
+                    <input th:field="*{id}" type="hidden" readonly="true" visible="true"/>
+                    <input th:field="*{renterevalorisee}" type="hidden" readonly="true" visible="true"/>
+                    <input th:field="*{etatedite}" type="hidden" readonly="true" visible="true" value="false"/>
+                    <tr>
+                        <td>Montant</td>
+                        <td><input th:required="required" th:size="10" th:field="*{montant}" /></td>
+                        <td th:if="${#fields.hasErrors('montant')}" th:text="#{rentes.rentes.valideName}" style="color:orangered;" ></td>
+                    </tr>
+
+                    <tr>
+                        <td>Date de paiement (AAAA-MM-JJ)</td>
+                        <td><input th:type="date" class="form-control tailledate" th:required="required" th:size="15" th:field="*{dateversem}" /></td>
+                        <td th:if="${#fields.hasErrors('dateversem')}" th:text="#{rentes.rentes.valideName}" style="color:orangered;" > </td>
+                    </tr>
+                    <tr>
+                        <td>Dernier jour payé (AAAA-MM-JJ)</td>
+                        <td><input th:type="date" class="form-control tailledate" th:required="required" th:size="15" th:field="*{dernierjourpaye}" /></td>
+                        <td th:if="${#fields.hasErrors('dernierjourpaye')}" th:text="#{rentes.rentes.valideName}" style="color:orangered;" > </td>
+                    </tr>
+                    <tr>
+                        <td>Periode versée</td>
+                        <td><input th:required="required" th:size="30" th:field="*{periodeversee}" /></td>
+                        <td style="color:orangered;" th:if="${#fields.hasErrors('periodeversee')}" th:text="#{rentes.rentes.valideName}"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button class="btn btn-primary btn-xs" id="btnAjout" type="submit" th:disabled="${DISABLEBTN}" >Enregistrer</button>
+                            <button class="btn btn-primary btn-xs" type="reset" value="Reset" >Reset</button>
+                            <button class="btn btn-warning btn-xs" type="button" id="btn-raz" >Nouveau</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script src="/js/project.js" th:src="@{/js/project.js}"></script>
+</body>
+</html>

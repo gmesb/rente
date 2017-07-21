@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html id="accueil" xmlns:th="http://www.thymeleaf.org" lang="fr" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+
+<!-- on insert un fragment ENTETE donc pas de repetition de code  la banniere est incluse ainsi que la barre de menus -->
+<div th:insert="fragments/header::copy"></div>
+
+
+<body class="bdy">
+
+<!-- on insert un fragment NAV PRINCIPALE donc pas de repetition de code  la banniere est incluse ainsi que la barre de menus -->
+<div th:insert="fragments/nav::copy"></div>
+
+
+
+<div id="principale">
+
+    <div class="col-sm-8">
+
+        <div class="fondForm table-responsive">
+            <h5>Liste des Rentiers</h5>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td>Id </td>
+                        <td>Nom de famille</td>
+                        <td>Nom marital</td>
+                        <td>Prénom</td>
+                        <td>Né(e) le</td>
+                        <td>Fin de droits</td>
+                        <td>Titulaire</td>
+                        <td>Grade</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                   <tr onmouseover="this.style.backgroundColor='#d3e2d5';" onmouseout="this.style.backgroundColor='white';"
+                    th:each="rentier: ${RENTIERS}">
+                         <td><a th:href="@{/preuvevie/list/{id} (id = ${rentier.id})}" th:text="${rentier.id}"></a></td>
+                         <td><a th:href="@{/preuvevie/list/{id} (id = ${rentier.id})}" th:text="${rentier.nomfamille}"></a></td>
+                         <td><a th:href="@{/preuvevie/list/{id} (id = ${rentier.id})}" th:text="${rentier.nommarital} "></a></td>
+                         <td><a th:href="@{/preuvevie/list/{id} (id = ${rentier.id})}" th:text="${rentier.prenom}"></a></td>
+                         <td><a th:href="@{/preuvevie/list/{id} (id = ${rentier.id})}" th:text="${#dates.format(rentier.datenaissance,'dd/MM/yyyy')}"></a></td>
+                         <td><a th:text="${#dates.format(rentier.findroit,'dd/MM/yyyy')}"></a></td>
+                         <td><a th:href="@{/preuvevie/list/{id} (id = ${rentier.id})}" th:text="${rentier.titulaire.libel}"></a></td>
+                         <td><a th:text="${rentier.grade.libel}"></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="fondForm table-responsive">
+
+           <h5>Preuves de vie enregistrées pour : <a th:text="${IDENTRENTIER}" ></a></h5>
+
+           <table class="table table-striped">
+               <thead>
+                   <tr>
+                       <td>Id </td>
+                       <td>Désignation</td>
+                       <td>Date demande</td>
+                       <td>Né(e) le</td>
+                       <td>Justificatif</td>
+                   </tr>
+               </thead>
+
+               <tbody>
+
+                   <tr th:each="preuvevie: ${PREUVEVIES}">
+
+                       <td><a th:href="@{/preuvevie/getnewpreuve/{id} (id = ${preuvevie.id})}" th:text="${preuvevie.id}"></a></td>
+                       <td><a th:size="20" th:href="@{/preuvevie/getnewpreuve/{id} (id = ${preuvevie.id})}" th:text="${preuvevie.libel}"></a></td>
+                       <td><a th:size="15" th:href="@{/preuvevie/getnewpreuve/{id} (id = ${preuvevie.id})}" th:text="${#dates.format(preuvevie.datedemande,'dd/MM/yyyy')} "></a></td>
+                       <td><a th:size="15" th:href="@{/preuvevie/getnewpreuve/{id} (id = ${preuvevie.id})}" th:text="${#dates.format(preuvevie.datereception,'dd/MM/yyyy')}"></a></td>
+                       <td><a th:href="@{/preuvevie/getnewpreuve/{id} (id = ${preuvevie.id})}"th:text="${preuvevie.preuve.libel}"></a></td>
+
+                   </tr>
+               </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-sm-4" type="hidden" th:hidden="${HiddenSaisie}" >
+
+        <div id="saisieRente" class="fondForm table-responsive" sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_USER','ROLE_SUPERVISOR')">
+
+            <h5>Enregistrer/modifier un justificatif</h5>
+            <h5 style="color:orangered;text-decoration: underline;" th:if="${MESSAGE} != null" th:text="|${MESSAGE}|"> </h5>
+
+            <form id="form-id" action="#" th:action="@{/preuvevie/add}" method="POST" th:object="${PREUVEVIE}" >
+                <table class="saisieTab">
+
+                    <input  th:field="*{id}" type="hidden" readonly="true" visible="true"/>
+                    <input  th:field="*{rentier}" type="hidden" readonly="true" visible="true"/>
+
+                    <tr>
+                        <td>Désignation</td>
+                        <td><input  th:required="required" th:size="25" th:field="*{libel}" /></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="color:orangered;" th:if="${#fields.hasErrors('libel')}" th:text="#{preuvevie.preuvevie.saisieObligatoire}"></td>
+                    </tr>
+                    <tr>
+                        <td>Date Demande (AAAA-MM-JJ)</td>
+                        <td><input type="date" class="form-control tailledate" required="required" th:size="15" th:field="*{datedemande}" />  </td>
+                   </tr>
+                    <tr>
+                        <td></td>
+                        <td style="color:orangered;" th:if="${#fields.hasErrors('datedemande')}" th:text="#{preuvevie.preuvevie.saisieObligatoire}"></td>
+                    </tr>
+                    <tr>
+                        <td>Date Reception (AAAA-MM-JJ)</td>
+                        <td><input type="date" class="form-control tailledate" th:size="15" th:field="*{datereception}" />  </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="color:orangered;" th:if="${#fields.hasErrors('datereception')}" th:text="#{preuvevie.preuvevie.saisieObligatoire}"></td>
+                    </tr>
+                    <tr>
+                        <td>Type Justificatif </td>
+                        <td><select th:required="required" th:width="25" th:field="*{preuve}">
+                                <option th:each ="preuv : ${PREUVES} "th:value = "${preuv.id}" th:text="${preuv.libel}">l</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><button class="btn btn-primary btn-xs" id="btnAjout" type="submit" th:disabled="${DISABLEBTN}" >Enregistrer</button>
+                            <button class="btn btn-primary btn-xs" type="reset" value="Reset" >Reset</button>
+                            <button class="btn btn-warning btn-xs" type="button" id="btn-raz" >Nouveau</button>
+                        </td>
+
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script src="/js/project.js" th:src="@{/js/project.js}"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html id="accueil" xmlns:th="http://www.thymeleaf.org" lang="fr" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<!-- on insert un fragment ENTETE donc pas de repetition de code  la banniere est incluse ainsi que la barre de menus -->
+<div th:insert="fragments/header::copy"></div>
+
+
+<body class="bdy">
+
+<!-- on insert un fragment NAV PRINCIPALE donc pas de repetition de code  la banniere est incluse ainsi que la barre de menus -->
+<div th:insert="fragments/nav::copy"></div>
+
+
+<div id="principale" sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_USER','ROLE_SUPERVISOR')">
+
+    <div class="col-sm-4 fondForm table-responsive">
+
+        <h5>Ajouter/Modifier l'établissement</h5>
+        <h6 style="color:orangered;" th:if="${MESSAGE} != null" th:text="|${MESSAGE}|"> </h6>
+
+        <form id="form-id" th:action="@{/etablissement/add}" method="POST" th:object="${ETABLISSEMENT}">
+
+            <table class="saisieTab">
+
+               <input  th:field="*{id}" type="hidden" readonly="true" visible="true"/>
+
+                <tr>
+                    <td>Etablissement</td>
+                    <td><input th:required="required" th:size="35"  th:field="*{nom}" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="color:orangered;" th:if="${#fields.hasErrors('nom')}" th:text="#{rentes.rentes.valideName}"></td>
+                </tr>
+                <tr>
+                    <td>Adresse </td>
+                    <td><input th:required="required" th:size="35" th:field="*{adresse1}" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="color:orangered;" th:if="${#fields.hasErrors('adresse1')}" th:text="#{rentes.rentes.valideName}"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input th:size="35" th:field="*{adresse2}" /></td>
+                </tr>
+                <tr>
+                    <td>Code postal </td>
+                    <td><input th:required="required" th:size="5" th:field="*{codepostal}" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="color:orangered;" th:if="${#fields.hasErrors('codepostal')}" th:text="#{rentes.rentes.valideName}"></td>
+                </tr>
+                <tr>
+                    <td>Ville </td>
+                    <td><input th:required="required"  th:size="35" th:field="*{ville}" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="color:orangered;" th:if="${#fields.hasErrors('ville')}" th:text="#{rentes.rentes.valideName}"></td>
+                </tr>
+                <tr>
+                    <td>Téléphone </td>
+                    <td><input th:size="20" th:field="*{telephone}" /></td>
+                </tr>
+                <tr>
+                    <td>Email </td>
+                    <td><input th:size="20" th:field="*{email}" /></td>
+                </tr>
+                <tr>
+                    <td>Responsable </td>
+                    <td><input th:size="35" th:field="*{responsable}" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="btn btn-primary btn-xs" id="btnAjout" type="submit" th:disabled="${DISABLEBTN}" >Enregistrer</button>
+                        <button class="btn btn-primary btn-xs" type="reset" value="Reset" >Reset</button>
+                        
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+
+    <div class="col-sm-8">
+       <div class="fondForm table-responsive">
+
+            <h5>Liste des etablissements</h5>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td>Id </td>
+                        <td>Désignation</td>
+                        <td>Adresse</td>
+                        <td>Adresse</td>
+                        <td>Code postal</td>
+                        <td>Ville</td>
+                        <td>Téléphone</td>
+                        <td>Email</td>
+                        <td>Responsable</td>
+                   </tr>
+
+                </thead>
+                    <tbody>
+                        <tr th:each="etabliss: ${ETABLISSEMENTS}">
+
+                            <td th:text="${etabliss.id}">1</td>
+                            <td><a th:href="@{/etablissement/get/{id} (id = ${etabliss.id})}"th:text="${etabliss.nom}"></a></td>
+                            <td><a th:href="@{/etablissement/get/{id} (id = ${etabliss.id})}"th:text="${etabliss.adresse1}"></a></td>
+                            <td><a th:href="@{/etablissement/get/{id} (id = ${etabliss.id})}"th:text="${etabliss.adresse2}"></a></td>
+                            <td><a th:href="@{/etablissement/get/{id} (id = ${etabliss.id})}"th:text="${etabliss.codepostal}"></a></td>
+                            <td><a th:href="@{/etablissement/get/{id} (id = ${etabliss.id})}"th:text="${etabliss.ville}"></a></td>
+                            <td><a th:href="@{/etablissement/get/{id} (id = ${etabliss.id})}"th:text="${etabliss.telephone}"></a></td>
+                            <td th:text="${etabliss.email}"></td>
+                            <td th:text="${etabliss.responsable}"></td>
+                            <td><a th:href="@{/etablissement/delete/{id} (id = ${etabliss.id})}"><img th:src="@{/images/croixRouge2.jpg}"/></a></td>
+                        </tr>
+                    </tbody>
+                    
+                    <tfoot><td><button class="btn btn-warning btn-xs" type="button" id="btn-raz" >Nouveau</button></td></tfoot>
+            </table>
+       </div>
+    </div>
+</div>
+
+<script src="../../static/js/project.js" th:src="@{/js/project.js}"></script>
+</body>
+</html>
