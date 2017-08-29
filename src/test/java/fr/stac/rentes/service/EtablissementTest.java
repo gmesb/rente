@@ -119,29 +119,7 @@ public class EtablissementTest {
     }
 
     /**
-     * Modification d'un établissement, TEST 2
-     * 1- on charge un enregistrement depuis la BDD, dans deux Objets differents, puis on les compare
-     * 2- On modifie
-     * 3- On persiste dans la BDD
-     * 4- On recharge depuis la BDD puis on compare, doivent être differents
-     * 5- On compare les deux Objets
-     */
-    @Test
-    public void testUpdateEtablissement(){
-        Etablissement e1 = etablissementService.getById(2L);
-        Etablissement e2 = etablissementService.getById(2L);
-
-        assertEquals(e1,e2);
-        e1.setNom("Nouveau EtablissementTest");
-        e1.setAdresse1("adreesse1");
-        etablissementService.save(e1);
-        // on recharge e1
-        e1 = etablissementService.getById(2L);
-        assertNotEquals("e1 différent de e2 : ",e1,e2);
-    }
-
-    /**
-     * Suppression d'un enregistremen dans la BDD,  TEST 3
+     * Suppression d'un enregistrement dans la BDD,  TEST 3
      * 1- On insere une nouveau enregistrement
      * 2- on verifie qu'il a été enregistré
      * 3- On supprime l'enegistrement

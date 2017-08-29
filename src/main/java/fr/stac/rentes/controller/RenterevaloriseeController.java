@@ -16,6 +16,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.validation.Valid;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -59,7 +63,9 @@ public class RenterevaloriseeController {
     public void setRenteService(RenteService renteService) {
         this.renteService = renteService;
     }
-    public RenteService getRenteService() {      return renteService;    }
+    public RenteService getRenteService() {      
+    	return renteService;
+    }
 
     @Autowired
     public void setRevalorisationService(RevalorisationService revalorisationService) {
@@ -92,11 +98,12 @@ public class RenterevaloriseeController {
 
     @GetMapping("/renterevalorisee/boucle")
     public String boucleRentes(Model model) {
-
+    	log.info("DEBUT DE FONCTION ");
+    	
         Versemtype versemtype = new Versemtype();
         versemtype.setId(3L);
-
-
+        log.info("VARIABLE versemtype " + versemtype);
+        
         List<Rente> rentesValides = renteService.allRentesPourRevalorisation(versemtype);  //  PAs de Forfait versemtype <>3
 
         //List<Rente> rentesValides = renteService.findAllByEtatrentePresent(1L);      // Une rente  28
@@ -109,6 +116,8 @@ public class RenterevaloriseeController {
 
         for (Rente uneRente : rentesValides) {
 
+        	log.info("BOUCLE PRINCIPALE ");
+        	
             String datFin = "";
 
             if(uneRente.getDatefinrente() == null ){
@@ -132,14 +141,11 @@ public class RenterevaloriseeController {
 
             String datDebut = formatBDD.format(uneRente.getDateconsolidation());
 
-            log.info("ID  +  Dates : "+uneRente.getId()+"    "+uneRente.getDateconsolidation()+"    "+dateFinRente +"   "+datDebut);
+            log.info("ID  +  Dates : "+uneRente.getId()+"  Date consolidation  "+uneRente.getDateconsolidation()+"  Date fin de rente  "+dateFinRente +" Date début  "+datDebut);
 
 
 
             // toutes les revalorisations non inclues dans cette rente et comprises dans les dates
-           /* List<Revalorisation> revalorisations = revalorisationService.getAllRevalorisationNotIn(uneRente.getDateconsolidation(),uneRente.getDatefinrente());
-*/
-
             List<Revalorisation> revalorisations = revalorisationService.getRevalorisationNonValidee(uneRente.getId(),datDebut,datFin);
 
 
@@ -149,9 +155,12 @@ public class RenterevaloriseeController {
             // nouvelle rente crée
             Renterevalorisee NEWrenterevalorisee = new Renterevalorisee();
 
+            log.info("VARIABLE REVALORISATION " + revalorisations);
 
             for (Revalorisation uneRevalorisation : revalorisations) {
 
+            	log.info("BOUCLE SECONDAIRE ");
+            	
                 String dateBDD = formatBDD.format(uneRevalorisation.getDaterevalorisation());
                 log.info("Date " + dateBDD);
                 log.info("Revalorisation EN COURS : " + uneRevalorisation);
@@ -173,6 +182,8 @@ public class RenterevaloriseeController {
                 NEWrenterevalorisee.setRevalorisation(uneRevalorisation);
                 NEWrenterevalorisee.setRente(uneRente);
 
+                log.info("MODIFICATION EN COURS ");
+                
                 NEWrenterevalorisee.setMontantrevalorise(MAXrenterevalorisee.getMontantrevalorise());
                 NEWrenterevalorisee.setId(0L);
 
@@ -210,10 +221,13 @@ public class RenterevaloriseeController {
                  */
                 renterevaloriseeService.save(MAXrenterevalorisee);      // on persiste
             }
+
         }
         model.addAttribute("HiddenAffiche", true);      // Desactive le formulaire
 
-        return "menu";                // on repart sur la page HTML de la nav pricipale qui sera rafraichie
+        log.info("FIN DE LA FONCTION");
+        
+        return "revalorisation";                // on repart sur la page HTML de la nav pricipale qui sera rafraichie
     }
 
 
@@ -416,7 +430,7 @@ public class RenterevaloriseeController {
         model.addAttribute("REVALORISATIONS", allRevalorisations);
 
 
-        // renterevalorisee.setId(renterevalorisee.getRevalorisation().getId()-1);
+        renterevalorisee.setId(renterevalorisee.getRevalorisation().getId()-1);
 
         // Attention j'ai rajouté
         model.addAttribute("bindingResult",bindingResult);

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html id="accueil" xmlns:th="http://www.thymeleaf.org" lang="fr" xmlns:sec="http://www.w3.org/1999/xhtml">
+<title>Rentes</title>
 
 <!-- on insert un fragment ENTETE donc pas de repetition de code  la banniere est incluse ainsi que la barre de menus -->
 <div th:insert="fragments/header::copy"></div>
@@ -105,15 +106,15 @@
                         <td style="color:orangered;" th:if="${#fields.hasErrors('libel')}" th:text="#{rente.rente.saisieObligatoire}"></td>
                     </tr>
                     <tr>
-                        <td>Date Consolidation (AAAA-MM-JJ)</td>
-                        <td><input th:type="date" class="form-control tailledate" th:required="required"  th:size="15" th:field="*{dateconsolidation}" />  </td>
+                        <td>Date Consolidation</td>
+                        <td><input th:type="date" class="form-control tailledate" th:required="required"  th:size="15" th:field="*{dateconsolidation}" placeholder="(AAAA-MM-JJ)" />  </td>
                     </tr>
                     <tr>
                         <td style="color:orangered;" th:if="${#fields.hasErrors('dateconsolidation')}" th:text="#{rente.rente.saisieObligatoire}"></td>
                     </tr>
                     <tr>
-                        <td>Date Accident (AAAA-MM-JJ)</td>
-                        <td><input th:type="date" class="form-control tailledate" th:required="required" th:size="15" th:field="*{dateaccident}" />  </td>
+                        <td>Date Accident</td>
+                        <td><input th:type="date" class="form-control tailledate" th:required="required" th:size="15" th:field="*{dateaccident}" placeholder="(AAAA-MM-JJ)" />  </td>
                     </tr>
                     <tr>
                        <td style="color:orangered;" th:if="${#fields.hasErrors('dateaccident')}" th:text="#{rente.rente.saisieObligatoire}"></td>

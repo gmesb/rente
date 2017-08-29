@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html id="accueil" xmlns:th="http://www.thymeleaf.org" lang="fr" xmlns:sec="http://www.w3.org/1999/xhtml">
-
+<title>Preuves de vie</title>
 
 <!-- on insert un fragment ENTETE donc pas de repetition de code  la banniere est incluse ainsi que la barre de menus -->
 <div th:insert="fragments/header::copy"></div>
@@ -103,16 +103,16 @@
                         <td style="color:orangered;" th:if="${#fields.hasErrors('libel')}" th:text="#{preuvevie.preuvevie.saisieObligatoire}"></td>
                     </tr>
                     <tr>
-                        <td>Date Demande (AAAA-MM-JJ)</td>
-                        <td><input type="date" class="form-control tailledate" required="required" th:size="15" th:field="*{datedemande}" />  </td>
+                        <td>Date Demande</td>
+                        <td><input type="date" class="form-control tailledate" required="required" th:size="15" th:field="*{datedemande}" placeholder="(AAAA-MM-JJ)"/>  </td>
                    </tr>
                     <tr>
                         <td></td>
                         <td style="color:orangered;" th:if="${#fields.hasErrors('datedemande')}" th:text="#{preuvevie.preuvevie.saisieObligatoire}"></td>
                     </tr>
                     <tr>
-                        <td>Date Reception (AAAA-MM-JJ)</td>
-                        <td><input type="date" class="form-control tailledate" th:size="15" th:field="*{datereception}" />  </td>
+                        <td>Date Reception</td>
+                        <td><input type="date" class="form-control tailledate" th:size="15" th:field="*{datereception}" placeholder="(AAAA-MM-JJ)"/>  </td>
                     </tr>
                     <tr>
                         <td></td>

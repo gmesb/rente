@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html id="accueil" xmlns:th="http://www.thymeleaf.org" lang="fr" xmlns:sec="http://www.w3.org/1999/xhtml">
-
+<title>Revalorisation global</title>
 <!-- on insert un fragment ENTETE donc pas de repetition de code  la banniere est incluse ainsi que la barre de menus -->
 <div th:insert="fragments/header::copy"></div>
 
@@ -42,8 +42,8 @@
                     <td style="color:orangered;" th:if="${#fields.hasErrors('coeff')}" th:text="#{rentes.rentes.valideName}"></td>
                 </tr>
                 <tr>
-                    <td><label>Date Valeur (AAAA-MM-JJ)</label></td>
-                    <td><input th:type="date" class="form-control tailledate" th:required="required" th:size="15" th:field="*{daterevalorisation}" /></td>
+                    <td><label>Date Valeur</label></td>
+                    <td><input th:type="date" class="form-control tailledate" th:required="required" th:size="15" th:field="*{daterevalorisation}" placeholder="(AAAA-MM-JJ)"/></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -61,7 +61,6 @@
                     <td>
                         <button class="btn btn-primary btn-xs" id="btnAjout" type="submit" th:disabled="${DISABLEBTN}" >Enregistrer</button>
                         <button class="btn btn-primary btn-xs" type="reset" value="Reset" >Reset</button>
-                        <button class="btn btn-warning btn-xs" type="button" id="btn-raz" >Nouveau</button>
                         <a th:href="@{/renterevalorisee/boucle}" class="btn btn-danger btn-xs" type="button" id="btn-rel" >Revaloriser</a>
                     </td>
                 </tr>
@@ -100,6 +99,8 @@
                     </tr>
                 </tbody>
             </table>
+            <button class="btn btn-warning btn-xs" type="button" id="btn-raz" >Nouveau</button>
+            
         </div>
     </div>
 </div>

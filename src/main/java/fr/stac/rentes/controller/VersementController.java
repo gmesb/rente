@@ -221,6 +221,8 @@ public class VersementController {
             if(uneRenterevalorisee.getDatedeb().compareTo(uneRenterevalorisee.getDatefin()) == 0 ){
                 //  RIEN A FAIRE ;
 
+            	log.info("DATE DEBUT " + uneRenterevalorisee.getDatedeb());
+            	log.info("DATE FIN " + uneRenterevalorisee.getDatefin());
                 log.info("RIEN A FAIRE................................................................");
 
             }else{
@@ -363,7 +365,7 @@ public class VersementController {
 
     @GetMapping("/versement/boucle")
     public String boucleVersement(Model model)throws NullPointerException  {
-
+	
         List<Rente> rentesValides = renteService.getAll();      // je prends toutes les rentes
 
         //List<Rente> rentesValides = renteService.findAllByEtatrentePresent(12L);      // je prends pour test
@@ -442,7 +444,7 @@ public class VersementController {
                             }
                         }
                     }
-                    break;
+                    break; 
 
                 case 2:
                     // CAS PAR MOIS   +++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -479,7 +481,7 @@ public class VersementController {
 
             switch (typeV){
             case 1:     // trimestre    4 trimestres
-
+            	
                 // on apelle la methode de calcul avec une date de debut positionnée et une rente a traiter
                 createVersementTrim(uneRente,dateDebut,"trim" );
                 break;
@@ -494,7 +496,7 @@ public class VersementController {
             case 3:     // forfait      1 forfait   ATTENTION PAS DE REVALORISATION POUR LES FORFAITS
 
                 // on fait si pas de versement unique deja fait
-
+            	
                 if(lastVersement.getDateversem() == null ) {
                     // la valeur de la plus recente revalorisation de la rente à appliquer
                     Renterevalorisee lastRenterevalorisee = renterevaloriseeService.getMaxRenterevalorisee(uneRente);
@@ -509,7 +511,7 @@ public class VersementController {
                     newVersement.setDateversem(new Date());
                     newVersement.setMontant(lastRenterevalorisee.getMontantrevalorise());
                     newVersement.setPeriodeversee("Paiement du Forfait  le " + formatter.format(newVersement.getDateversem()));
-
+                    
                     newVersement.setDernierjourpaye(uneRente.getEtatrente());
 
                     newVersement.setRenterevalorisee(lastRenterevalorisee);  // si  on modifie Renterevalorisee se sera persisté dans la BDD
@@ -526,7 +528,7 @@ public class VersementController {
                 break;
             }
         }
-
+    
         model.addAttribute("HiddenAffiche", true);      // Desactive le formulaire
 
         return "menu";                // on repart sur la page HTML de la nav principale qui sera rafraichie

@@ -98,8 +98,7 @@ public class RevalorisationService {
      */
     public List<Revalorisation> getRevalorisationNonValidee(Long idRente,String datDebut,String datFin ){
 
-        String sql="SELECT * FROM revalorisation WHERE revalorisation.ID NOT IN(SELECT ID_REVALORISATION FROM renterevalorisee " +
-                                                                                "WHERE ID_RENTE="+idRente+") " +
+        String sql="SELECT * FROM revalorisation WHERE revalorisation.ID NOT IN(SELECT ID_REVALORISATION FROM renterevalorisee " + "WHERE ID_RENTE="+idRente+") " +
                     "AND daterevalorisation BETWEEN '"+datDebut+"' AND '"+datFin+"' ORDER BY daterevalorisation ASC";
 
         System.out.print(" Requete : "+sql);

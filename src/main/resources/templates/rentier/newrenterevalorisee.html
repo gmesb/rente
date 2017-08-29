@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html id="accueil" xmlns:th="http://www.thymeleaf.org" lang="fr" xmlns:sec="http://www.w3.org/1999/xhtml">
-
+<title>Revalorisation</title>
 
 <!-- on insert un fragment ENTETE donc pas de repetition de code  la banniere est incluse ainsi que la barre de menus -->
 <div th:insert="fragments/header::copy"></div>
@@ -140,18 +140,18 @@
                     <input th:field="*{rente}" type="hidden" readonly="true" visible="true"/>
 
                     <tr>
-                        <td>Date du lancement (AAAA-MM-JJ)</td>
-                        <td><input th:type="date" class="form-control tailledate" th:required="required" th:size="14" th:field="*{datelancement}" /></td>
+                        <td>Date du lancement</td>
+                        <td><input th:type="date" class="form-control tailledate" th:required="required" th:size="14" th:field="*{datelancement}" placeholder="(AAAA-MM-JJ)"/></td>
                         <td th:if="${#fields.hasErrors('datelancement')}" th:text="#{rentes.rentes.valideName}"></td>
                     </tr>
                     <tr>
-                        <td>Date début (AAAA-MM-JJ)</td>
-                        <td><input th:type="date" class="form-control tailledate" th:required="required" th:size="14" th:field="*{datedeb}" /></td>
+                        <td>Date début</td>
+                        <td><input th:type="date" class="form-control tailledate" th:required="required" th:size="14" th:field="*{datedeb}" placeholder="(AAAA-MM-JJ)"/></td>
                         <td th:if="${#fields.hasErrors('datedeb')}" th:text="#{rentes.rentes.valideName}"></td>
                     </tr>
                     <tr>
-                        <td>Date fin (AAAA-MM-JJ)</td>
-                        <td><input th:type="date" class="form-control tailledate" th:required="required" th:size="14" th:field="*{datefin}" /></td>
+                        <td>Date fin</td>
+                        <td><input th:type="date" class="form-control tailledate" th:required="required" th:size="14" th:field="*{datefin}" placeholder="(AAAA-MM-JJ)"/></td>
                         <td th:if="${#fields.hasErrors('datefin')}" th:text="#{rentes.rentes.valideName}"></td>
                     </tr>
                     <tr>

@@ -97,6 +97,8 @@ public class PreuvevieController {
         // SAUVEGARDE DU FICHIER POUR LE PUBLIPOSTAGE DE DEMANDE DE PREUVE DE VIE
         Path cheminFileCSV = Paths.get("Editions/F-"+username+"PreuveVie.csv");
         Charset charsetType = Charset.forName("UTF-8");
+        
+        log.info("cheminFileCSV : "+cheminFileCSV);
 
 
         try (BufferedWriter bufferPublipostage = Files.newBufferedWriter(cheminFileCSV,charsetType))
@@ -128,7 +130,7 @@ public class PreuvevieController {
                 bufferPublipostage.newLine();     // pour passer a la ligne suivante dans le fichier .txt
             }
         }catch(IOException e){e.printStackTrace();}
-
+ 
         return "menu";                // on repart sur la page HTML de la nav pricipale qui sera rafraichie
     }
 

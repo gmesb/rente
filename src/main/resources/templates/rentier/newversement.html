@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html id="accueil" xmlns:th="http://www.thymeleaf.org" lang="fr" xmlns:sec="http://www.w3.org/1999/xhtml">
-
+<title>Versement</title>
 
 <!-- on insert un fragment ENTETE donc pas de repetition de code  la banniere est incluse ainsi que la barre de menus -->
 <div th:insert="fragments/header::copy"></div>
@@ -122,7 +122,7 @@
                         </ul>
                     </td>-->
                     <td>
-                        <a th:href="@{/versement/listVersem/{idRevalo} (idRevalo = ${revalo.id})}" th:text="${revalo.revalorisation.directive}" th.text="${revalo.revalorisation.coeff}" ></a>
+                        <a th:href="@{/versement/listVersem/{idRevalo} (idRevalo = ${revalo.id})}" text="${revalo.revalorisation.directive}" th:text="${revalo.revalorisation.coeff}" ></a>
                     </td>
                 </tr>
                 </tbody>
@@ -185,13 +185,13 @@
                     </tr>
 
                     <tr>
-                        <td>Date de paiement (AAAA-MM-JJ)</td>
-                        <td><input th:type="date" class="form-control tailledate" th:required="required" th:size="15" th:field="*{dateversem}" /></td>
+                        <td>Date de paiement</td>
+                        <td><input th:type="date" class="form-control tailledate" th:required="required" th:size="15" th:field="*{dateversem}" placeholder="(AAAA-MM-JJ)"/></td>
                         <td th:if="${#fields.hasErrors('dateversem')}" th:text="#{rentes.rentes.valideName}" style="color:orangered;" > </td>
                     </tr>
                     <tr>
-                        <td>Dernier jour payé (AAAA-MM-JJ)</td>
-                        <td><input th:type="date" class="form-control tailledate" th:required="required" th:size="15" th:field="*{dernierjourpaye}" /></td>
+                        <td>Dernier jour payé</td>
+                        <td><input th:type="date" class="form-control tailledate" th:required="required" th:size="15" th:field="*{dernierjourpaye}" placeholder="(AAAA-MM-JJ)"/></td>
                         <td th:if="${#fields.hasErrors('dernierjourpaye')}" th:text="#{rentes.rentes.valideName}" style="color:orangered;" > </td>
                     </tr>
                     <tr>

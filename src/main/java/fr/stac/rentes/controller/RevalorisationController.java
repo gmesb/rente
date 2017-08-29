@@ -70,8 +70,7 @@ public class RevalorisationController {
 
         List<Revalorisation> revalorisations = revalorisationService.getAll();
 
-        log.info("Je suis dans /revalorisation/list");
-
+      
         // on initialize pour ne pas avoir  null dans l'ID
         Revalorisation revalorisation = new Revalorisation();
         revalorisation.setId(0L);                            // 0 pour la valeur et L pour indiquer que c'est un type Long

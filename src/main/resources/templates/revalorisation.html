@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html id="accueil" xmlns:th="http://www.thymeleaf.org" lang="fr"
+	xmlns:sec="http://www.w3.org/1999/xhtml">
+	<meta charset="UTF-8">
+	<title>Revalorisation</title>
+
+<div th:insert="fragments/header::copy"></div>
+<body class="bdy">
+
+	<!-- on insert un fragment NAV PRINCIPALE donc pas de repetition de code  la banniere est incluse ainsi que la barre de menus -->
+	<div th:insert="fragments/nav::copy"></div>
+
+
+	<div id="principale">
+
+		<div class="col-sm-7">
+			<div class="fondForm table-responsive">
+
+				<h1>Revalorisation appliqué</h1>
+
+
+				<a th:href="@{/login/menu}">Retour à l'accueil</a>
+
+			</div>
+		</div>
+
+	</div>
+	<div th:insert="fragments/footer::copy"></div>
+	<script src="/js/project.js" th:src="@{/js/project.js}"></script>
+</body>
+</html>

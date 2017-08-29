@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report3" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f14cdcf3-2f32-4431-ad56-c475456ab49a">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="288"/>
 	<property name="ireport.encoding" value="UTF-8"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<subDataset name="New Dataset 1" uuid="af39b033-fd1c-4a2d-a8f3-ab8f466a4466"/>
@@ -334,7 +334,7 @@ FROM
 			<staticText>
 				<reportElement mode="Opaque" x="154" y="70" width="258" height="20" backcolor="#99FF99" uuid="99c6b400-5278-4328-bfb7-edcb6ee81418"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="12" isBold="true" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="DejaVu Sans" size="12" isBold="true" isItalic="false" isUnderline="false" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[ETAT LIQUIDATIF DE RENTE ACCIDENT]]></text>
 			</staticText>
@@ -428,7 +428,7 @@ FROM
 				<text><![CDATA[Banque :]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="50" y="512" width="145" height="20" uuid="033d8af3-0bc5-417a-b182-81cb2d84e49a"/>
+				<reportElement x="61" y="512" width="145" height="20" uuid="033d8af3-0bc5-417a-b182-81cb2d84e49a"/>
 				<textElement>
 					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
@@ -533,7 +533,7 @@ FROM
 				<textFieldExpression><![CDATA[$F{v_ordreliquidatif_cle}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="41" y="537" width="158" height="20" uuid="478343c3-ce9c-45f1-a82b-c92bdf47d9ae"/>
+				<reportElement x="44" y="537" width="158" height="20" uuid="478343c3-ce9c-45f1-a82b-c92bdf47d9ae"/>
 				<textElement>
 					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html id="accueil" xmlns:th="http://www.thymeleaf.org" lang="fr" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html id="accueil" xmlns:th="http://www.thymeleaf.org" lang="fr"
+	xmlns:sec="http://www.w3.org/1999/xhtml">
+	<title>Gestion des rentiers</title>
 
 
 <!-- on insert un fragment ENTETE donc pas de repetition de code  la banniere est incluse ainsi que la barre de menus -->
@@ -8,172 +10,187 @@
 
 <body class="bdy">
 
-<!-- on insert un fragment NAV PRINCIPALE donc pas de repetition de code  la banniere est incluse ainsi que la barre de menus -->
-<div th:insert="fragments/nav::copy"></div>
+	<!-- on insert un fragment NAV PRINCIPALE donc pas de repetition de code  la banniere est incluse ainsi que la barre de menus -->
+	<div th:insert="fragments/nav::copy"></div>
 
 
 
-<div id="principale" >
+	<div id="principale">
 
-    <div class="col-sm-5 fondForm" sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_USER','ROLE_SUPERVISOR')">
+		<div class="col-sm-5 fondForm"
+			sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_USER','ROLE_SUPERVISOR')">
 
-            <h5>Ajouter/Modifier un rentier</h5>
-            <h6 style="color:orangered;text-decoration: underline;" th:if="${MESSAGE} != null" th:text="|${MESSAGE}|"> </h6>
+			<h5>Ajouter/Modifier un rentier</h5>
+			<h6 style="color: orangered; text-decoration: underline;"
+				th:if="${MESSAGE} != null" th:text="|${MESSAGE}|"></h6>
 
-            <form id="form-id" th:action="@{/rentier/add}" method="POST" th:object="${RENTIER}" >
+			<form id="form-id" th:action="@{/rentier/add}" method="POST"
+				th:object="${RENTIER}">
 
-                <table class="saisieTab">
+				<table class="saisieTab">
 
-                    <input  th:field="*{id}" type="hidden" readonly="true" visible="true"/>
-                    <input  th:field="*{user}" type="hidden" readonly="true" visible="true"/>
+					<input th:field="*{id}" type="hidden" readonly="true" visible="true" />
+					<input th:field="*{user}" type="hidden" readonly="true" visible="true" />
 
-                    <tr>
-                        <td>N° dossier     </td>
-                        <td><input  th:required="required" th:size="7" th:field="*{dossier}" /></td>
-                        <td style="color:orangered;" th:if="${#fields.hasErrors('dossier')}" th:text="#{rentier.rentier.saisieObligatoire}"></td>
-                    </tr>
+					<tr>
+						<td>N° dossier *</td>
+						<td><input th:required="required" th:size="7" th:field="*{dossier}" /></td>
+						<td style="color: orangered;" th:if="${#fields.hasErrors('dossier')}" th:text="#{rentier.rentier.saisieObligatoire}"></td>
+					</tr>
 
-                    <tr>
-                        <td>Nom naissance  </td>
-                        <td><input th:required="required" th:size="30" th:field="*{nomfamille}" /></td>
-                        <td style="color:orangered;"  th:if="${#fields.hasErrors('nomfamille')}" th:text="#{rentier.rentier.saisieObligatoire}"></td>
-                    </tr>
-                    <tr>
-                        <td>Nom marital</td>
-                        <td><input  th:size="30" th:field="*{nommarital}" /></td>
-                        <td style="color:orangered;"  th:if="${#fields.hasErrors('nommarital')}" th:text="#{rentier.rentier.saisieObligatoire}"></td>
-                    </tr>
-                    <tr>
-                        <td>Prénom</td>
-                        <td><input th:required="required" th:size="30" th:field="*{prenom}" /></td>
-                        <td style="color:orangered;"  th:if="${#fields.hasErrors('prenom')}" th:text="#{rentier.rentier.saisieObligatoire}"></td>
-                    </tr>
-                    <tr>
-                        <td>Date Naissance (AAAA-MM-JJ)</td>
-                        <td><input th:type="date" id="birthDate" class="form-control tailledate" th:required="required" th:size="15" th:field="*{datenaissance}" />  </td>
-                        <td style="color:orangered;" th:if="${#fields.hasErrors('datenaissance')}" th:text="#{rentier.rentier.datenaissance}"></td>
-                    </tr>
-                    <tr>
-                        <td>Sexe</td>
-                        <td>
-                            <div>
-                                <input class="radio-inline" th:type="radio" th:value="1" th:checked="checked" th:field="*{sexe}" />Masculin
-                                <input class="radio-inline" th:type="radio" th:value="2" th:field="*{sexe}" />Féminin
-                            </div>
-                        </td>
-                        <td style="color:orangered;" th:if="${#fields.hasErrors('sexe')}" th:text="#{rentier.rentier.saisieObligatoire}"></td>
-                    </tr>
-                    <tr>
-                        <td>Adresse</td>
-                        <td><input  th:required="required" th:size="43" th:field="*{adresse1}" placeholder="ligne 1 d'adresse" /></td>
-                        <td style="color:orangered;" th:if="${#fields.hasErrors('adresse1')}" th:text="#{rentier.rentier.saisieObligatoire}"></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><input  th:size="43" th:field="*{adresse2}" placeholder="ligne 2 d'adresse"  /></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>CP et ville </td>
-                        <td><input  th:required="required" th:size="5" th:field="*{codepostal}" />
-                            <input  th:required="required" th:size="32" th:field="*{ville}" />
-                        </td>
-                        <td style="color:orangered;" th:if="${#fields.hasErrors('ville')}" th:text="#{rentier.rentier.saisieObligatoire}"></td>
-                    </tr>
-                    <tr>
-                        <td>Nom Banque</td>
-                        <td><input  th:required="required" th:size="43" th:field="*{banque}" /> </td>
-                        <td style="color:orangered;"  th:if="${#fields.hasErrors('banque')}" th:text="#{rentier.rentier.saisieObligatoire}"></td>
-                    </tr>
-                    <tr><td>RIB</td>
-                        <td><input  th:required="required" th:size="6" th:field="*{guichet}" placeholder="guichet"/>
-                            <input  th:required="required" th:size="6" th:field="*{codebanque}" placeholder="code banque"/>
-                            <input  th:required="required" th:size="15" th:field="*{compte}" placeholder="compte"/>
-                            <input  th:required="required" th:size="1" th:field="*{cle}" placeholder="cle"/>
-                        </td>
-                        <td style="color:orangered;"  th:if="${#fields.hasErrors('guichet')}" th:text="#{rentier.rentier.saisieObligatoire}"></td>
-                    </tr>
-                    <tr><td>Iban</td>
-                        <td><input  th:required="required" th:size="20" th:field="*{Iban}" placeholder="Iban"/> </td>
-                        <td style="color:orangered;"  th:if="${#fields.hasErrors('iban')}" th:text="#{rentier.rentier.saisieObligatoire}"></td>
-                    </tr>
-                    <tr>
-                        <td>Fin droits</td>
-                        <td><input type="date" id="findroits" class="form-control tailledate" th:size="12" th:field="*{findroit}" />
-                            <input  th:size="30" th:field="*{motifarret}" placeholder="motif" /></td>
-                        <td style="color:orangered;" th:if="${#fields.hasErrors('findroit')}" th:text="#{rentier.rentier.saisieObligatoire}"></td>
-                    </tr>
-                    <tr>
-                        <td>Ayant droit </td>
-                        <td><select th:required="required" th:width="25" th:field="*{titulaire}">
-                                <option th:each ="titul : ${TITULAIRES} "th:value = "${titul.id}" th:text="${titul.libel}">l</option>
-                            </select>
-
-                            <span></span>
-
-                            <span class="marge5">Grade</span>
-                            <select th:required="required" th:width="25" th:field="*{grade}">
-                                <option th:each ="grade : ${GRADES} "th:value = "${grade.id}" th:text="${grade.libel}">l</option>
-                            </select>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <button class="btn btn-primary btn-xs" id="btnAjout" type="submit" th:disabled="${DISABLEBTN}" >Enregistrer</button>
-                            <button class="btn btn-primary btn-xs" type="reset" value="Reset" >Reset</button>
-                            <button class="btn btn-warning btn-xs" type="button" id="btn-raz" >Nouveau</button>
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        <!--</div>-->
-    </div>
+					<tr>
+						<td>Nom naissance *</td>
+						<td><input th:required="required" type="text" th:size="30" th:field="*{nomfamille}" /></td>
+						<td style="color: orangered;" th:if="${#fields.hasErrors('nomfamille')}" th:text="#{rentier.rentier.saisieObligatoire}"></td>
+					</tr>
+					<tr>
+						<td>Nom marital</td>
+						<td><input th:size="30" type="text" th:field="*{nommarital}" /></td>
+						<td style="color: orangered;" th:if="${#fields.hasErrors('nommarital')}" th:text="#{rentier.rentier.saisieObligatoire}"></td>
+					</tr>
+					<tr>
+						<td>Prénom *</td>
+						<td><input th:required="required" type="text" th:size="30" th:field="*{prenom}" /></td>
+						<td style="color: orangered;" th:if="${#fields.hasErrors('prenom')}" th:text="#{rentier.rentier.saisieObligatoire}"></td>
+					</tr>
+					<tr>
+						<td>Date Naissance *</td>
+						<td><input th:required="required" th:type="date" id="birthDate" class="form-control tailledate" th:size="15" th:field="*{datenaissance}" placeholder="(AAAA-MM-JJ)" /></td>
+						<td style="color: orangered;" th:if="${#fields.hasErrors('datenaissance')}" th:text="#{rentier.rentier.datenaissance}"></td>
+					</tr>
+					<tr>
+						<td>Sexe *</td>
+						<td>
+							<div>
+								<input class="radio-inline" th:type="radio" th:value="1" th:checked="checked" th:field="*{sexe}" />Masculin 
+								<input class="radio-inline" th:type="radio" th:value="2" th:field="*{sexe}" />Féminin
+							</div>
+						</td>
+						<td style="color: orangered;" th:if="${#fields.hasErrors('sexe')}" th:text="#{rentier.rentier.saisieObligatoire}"></td>
+					</tr>
+					<tr>
+						<td>Adresse *</td>
+						<td><input th:required="required" type="text" th:size="43" th:field="*{adresse1}" placeholder="ligne 1 d'adresse" /></td>
+						<td style="color: orangered;" th:if="${#fields.hasErrors('adresse1')}" th:text="#{rentier.rentier.saisieObligatoire}"></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input th:type="text" th:size="43" th:field="*{adresse2}" placeholder="ligne 2 d'adresse" /></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>CP et ville *</td>
+						<td><input th:required="required" th:size="5" th:field="*{codepostal}" /> <input th:required="required" type="text" th:size="32" th:field="*{ville}" /></td>
+						<td style="color: orangered;" th:if="${#fields.hasErrors('ville')}" th:text="#{rentier.rentier.saisieObligatoire}"></td>
+					</tr>
+					<tr>
+						<td>Nom Banque *</td>
+						<td><input th:required="required" type="text" th:size="43" th:field="*{banque}" /></td>
+						<td style="color: orangered;" th:if="${#fields.hasErrors('banque')}" th:text="#{rentier.rentier.saisieObligatoire}"></td>
+					</tr>
+					<tr>
+						<td>RIB *</td>
+						<td><input th:required="required" th:size="5" th:field="*{guichet}" placeholder="guichet" />
+							<input th:required="required" th:size="5" th:field="*{codebanque}" placeholder="code banque" /> <input th:required="required" th:size="11" th:field="*{compte}" placeholder="compte" />
+							<input th:required="required" th:size="2" th:field="*{cle}" placeholder="cle" />
+						</td>
+						<td style="color: orangered;" th:if="${#fields.hasErrors('guichet')}" th:text="#{rentier.rentier.saisieObligatoire}"></td>
+					</tr>
+					<tr>
+						<td>Iban *</td>
+						<td><input th:required="required" th:size="27" th:field="*{Iban}" placeholder="Iban" /></td>
+						<td style="color: orangered;" th:if="${#fields.hasErrors('iban')}" th:text="#{rentier.rentier.saisieObligatoire}"></td>
+					</tr>
+					<tr>
+						<td>Fin droits</td>
+						<td><input type="date" id="findroits" class="form-control tailledate" th:size="12" th:field="*{findroit}" /> <input th:size="30" th:field="*{motifarret}" placeholder="motif" /></td>
+						<td style="color: orangered;" th:if="${#fields.hasErrors('findroit')}" th:text="#{rentier.rentier.saisieObligatoire}"></td>
+					</tr>
+					<tr>
+						<td>Ayant droit *</td>
+						<td><select th:required="required" th:width="25" th:field="*{titulaire}">
+								<option th:each="titul : ${TITULAIRES} " th:value="${titul.id}" th:text="${titul.libel}">l</option>
+						</select> 
+						
+						<span class="marge5">Grade *</span>
+						<select th:required="required" th:width="25" th:field="*{grade}">
+								<option th:each="grade : ${GRADES} " th:value="${grade.id}" th:text="${grade.libel}">l</option>
+						</select></td>
+					</tr>
+					<tr>
+						<td style="color:#9e2a2b">* champs obligatoire</td>
+					</tr>
+					<tr>
+						<td>
+							<button class="btn btn-primary btn-xs" id="btnAjout" type="submit" th:disabled="${DISABLEBTN}">Enregistrer</button>
+							<button class="btn btn-primary btn-xs" type="reset" value="Reset">Reset</button>
+						</td>
+					</tr>
+				</table>
+			</form>
+			<!--</div>-->
+		</div>
 
 
-    <div class="col-sm-6">
-        <h5>Liste des Rentiers</h5>
+		<div class="col-sm-6">
+			<h5>Liste des Rentiers</h5>
 
-        <div class="fondForm table-responsive">
-             <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <td sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_SUPERVISOR')">Id </td>
-                        <td>Nom de famille</td>
-                        <td>Prénom</td>
-                        <td>Né(e) le</td>
-                        <td>Fin de droits</td>
-                        <td>Titulaire</td>
-                        <td>Grade</td>
-                    </tr>
-                </thead>
+			<div class="fondForm table-responsive">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<td
+								sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_SUPERVISOR')">Id
+							</td>
+							<td>Nom de famille</td>
+							<td>Prénom</td>
+							<td>Né(e) le</td>
+							<td>Fin de droits</td>
+							<td>Titulaire</td>
+							<td>Grade</td>
+						</tr>
+					</thead>
 
-                <tbody>
-                    <tr onmouseover="this.style.backgroundColor='#d3e2d5';" onmouseout="this.style.backgroundColor='white';"
-                     th:each="rentier: ${RENTIERS}">
-                        <td sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_SUPERVISOR')">
-                            <a th:href="@{/rentier/get/{id} (id = ${rentier.id})}" th:text="${rentier.id}"></a>
-                        </td>
-                        <td><a th:size="20" th:href="@{/rentier/get/{id} (id = ${rentier.id})}" th:text="${rentier.nomfamille}"></a></td>
-                        <td><a th:size="15" th:href="@{/rentier/get/{id} (id = ${rentier.id})}"th:text="${rentier.prenom}"></a></td>
-                        <td><a th:href="@{/rentier/get/{id} (id = ${rentier.id})}"th:text="${#dates.format(rentier.datenaissance,'dd/MM/yyyy')}"></a></td>
+					<tbody>
+						<tr onmouseover="this.style.backgroundColor='#d3e2d5';"
+							onmouseout="this.style.backgroundColor='white';"
+							th:each="rentier: ${RENTIERS}">
+							<td
+								sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_SUPERVISOR')">
+								<a th:href="@{/rentier/get/{id} (id = ${rentier.id})}"
+								th:text="${rentier.id}"></a>
+							</td>
+							<td><a th:size="20"
+								th:href="@{/rentier/get/{id} (id = ${rentier.id})}"
+								th:text="${rentier.nomfamille}"></a></td>
+							<td><a th:size="15"
+								th:href="@{/rentier/get/{id} (id = ${rentier.id})}"
+								th:text="${rentier.prenom}"></a></td>
+							<td><a th:href="@{/rentier/get/{id} (id = ${rentier.id})}"
+								th:text="${#dates.format(rentier.datenaissance,'dd/MM/yyyy')}"></a></td>
 
-                       <!-- <td th:text="${rentier.sexe}">1</td>-->
-                        <td><a th:href="@{/rentier/get/{id} (id = ${rentier.id})}"th:text="${#dates.format(rentier.findroit,'dd/MM/yyyy')}"></a></td>
+							<!-- <td th:text="${rentier.sexe}">1</td>-->
+							<td><a th:href="@{/rentier/get/{id} (id = ${rentier.id})}"
+								th:text="${#dates.format(rentier.findroit,'dd/MM/yyyy')}"></a></td>
 
-                        <td><a th:href="@{/rentier/get/{id} (id = ${rentier.id})}"th:text="${rentier.titulaire.libel}"></a></td>
-                        <td><a th:href="@{/rentier/get/{id} (id = ${rentier.id})}"th:text="${rentier.grade.libel}"></a></td>
+							<td><a th:href="@{/rentier/get/{id} (id = ${rentier.id})}"
+								th:text="${rentier.titulaire.libel}"></a></td>
+							<td><a th:href="@{/rentier/get/{id} (id = ${rentier.id})}"
+								th:text="${rentier.grade.libel}"></a></td>
 
-                        <td sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_SUPERVISOR')">
-                            <a th:href="@{/rentier/delete/{id} (id = ${rentier.id})}"><img th:src="@{/images/croixRouge2.jpg}"/></a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
+							<td
+								sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_SUPERVISOR')">
+								<a th:href="@{/rentier/delete/{id} (id = ${rentier.id})}"><img
+									th:src="@{/images/croixRouge2.jpg}" /></a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<button class="btn btn-warning btn-xs" type="button" id="btn-raz">Nouveau</button>
+			</div>
+		</div>
+	</div>
 
-<script src="/js/project.js" th:src="@{/js/project.js}"></script>
+	<script src="/js/project.js" th:src="@{/js/project.js}"></script>
 </body>
 </html>
