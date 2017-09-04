@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html id="accueil" xmlns:th="http://www.thymeleaf.org" lang="fr" xmlns:sec="http://www.w3.org/1999/xhtml">
+<meta charset="UTF-8">
+
+<title>FAQ</title>
+
+<div th:insert="fragments/header::copy"></div>
+
+<body class="bdy">
+ <div th:insert="fragments/nav::copy"></div>
+<!--
+	<section class="cd-faq">
+ 
+	<div class="cd-faq-items">
+			<h1>Basics</h1>
+			<li>
+				<a class="cd-faq-trigger"><h2>Comment supprimer un rentier?</h2></a>
+					Pour pouvoir supprimer un rentier, il faut tout d'abord supprimer tous les versements qui lui sont affecté (dans le sous menu "effectuer un versement"), ainsi que ses preuves de vie (si l'ayant droit en possède).
+					Ensuite toutes ses revalorisations (dans le sous menu "faire une revalorisation de rente"). Puis supprimer toutes les rentes qui lui sont accordés (dans le sous menu "gestion des rentes").
+					Et enfin, vous pouvez supprimer le rentier dans le menu "gestion des rentiers". 
+			</li>
+ 
+			<li> 
+				<a class="cd-faq-trigger" href="#0">Appliqué la revalorisation en boucle</a>
+					Effectuer la revalorisation en boucle se fait de la manière suivante. Il faut aller dans la rubrique "enregistrer les revalorisations" qui se trouve dans le menu "Activité périodique".
+					Arrivé sur la page vous trouverez un tableau sur la partie gauche de l'écran qu'il faudra remplir puis enregistrer une fois ce dernier complété.
+					Maintenant deux possibilité s'offre à vous pour appliquer cette revalorisation. La première façon est cliqué sur la dernière revalorisation qui se trouve dans le tableau situé à droite de votre écran (celle-ci sera affiché dans le tableau de gauche une fois cliqué) vous aurez juste à cliqué sur le bouton "Revaloriser" et votre revalorisation sera effectue.
+					La deuxième façon est d'aller dans le sous menu "appliqué la revalorisation en boucle" se trouvant dans le menu "Activité périodique" et la revalorisation se fera automatiquement avec le dernier coefficient effectué.
+			</li>
+			
+			<li> 
+				<a class="cd-faq-trigger" href="#0">PDF : Généré les ordres de versements</a>
+				<div class="cd-faq-content">
+					   
+				</div> 
+			</li>
+
+	</div> 
+</section>
+-->
+
+<div class="faq_container">
+	<div class="faq">
+		<div class="faq_question">Comment supprimer un rentier?</div>
+			<div class="faq_answer_container">
+				<div class="faq_answer">Pour pouvoir supprimer un rentier, il faut tout d'abord supprimer tous les versements qui lui sont affecté (dans le sous menu "effectuer un versement"), ainsi que ses preuves de vie (si l'ayant droit en possède).
+					Ensuite toutes ses revalorisations (dans le sous menu "faire une revalorisation de rente"). Puis supprimer toutes les rentes qui lui sont accordés (dans le sous menu "gestion des rentes").
+					Et enfin, vous pouvez supprimer le rentier dans le menu "gestion des rentiers". </div>
+			</div>        
+		</div>
+    
+    <br>
+
+	 <div class="faq">
+      <div class="faq_question">Appliqué la revalorisation en boucle</div>
+           <div class="faq_answer_container">
+              <div class="faq_answer">Effectuer la revalorisation en boucle se fait de la manière suivante. Il faut aller dans la rubrique "enregistrer les revalorisations" qui se trouve dans le menu "Activité périodique".
+					Arrivé sur la page vous trouverez un tableau sur la partie gauche de l'écran qu'il faudra remplir puis enregistrer une fois ce dernier complété.
+					Maintenant deux possibilité s'offre à vous pour appliquer cette revalorisation. La première façon est cliqué sur la dernière revalorisation qui se trouve dans le tableau situé à droite de votre écran (celle-ci sera affiché dans le tableau de gauche une fois cliqué) vous aurez juste à cliqué sur le bouton "Revaloriser" et votre revalorisation sera effectue.
+					La deuxième façon est d'aller dans le sous menu "appliqué la revalorisation en boucle" se trouvant dans le menu "Activité périodique" et la revalorisation se fera automatiquement avec le dernier coefficient effectué.</div>
+           </div>        
+    </div>
+ </div> 
+  
+	<script>
+	$(document).ready(function() {
+		 
+	    $('.faq_question').click(function() {
+	 
+	        if ($(this).parent().is('.open')){
+	            $(this).closest('.faq').find('.faq_answer_container').animate({'height':'0'},500);
+	            $(this).closest('.faq').removeClass('open');
+	   
+	            }else{
+	                var newHeight =$(this).closest('.faq').find('.faq_answer').height() +'px';
+	                $(this).closest('.faq').find('.faq_answer_container').animate({'height':newHeight},500);
+	                $(this).closest('.faq').addClass('open');
+	            }
+	 
+	    });
+	 
+	});
+	</script>
+</body>
+
+</html>

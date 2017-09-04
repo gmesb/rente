@@ -116,7 +116,7 @@
                             <td><a th:href="@{/etablissement/get/{id} (id = ${etabliss.id})}"th:text="${etabliss.telephone}"></a></td>
                             <td th:text="${etabliss.email}"></td>
                             <td th:text="${etabliss.responsable}"></td>
-                            <td><a th:href="@{/etablissement/delete/{id} (id = ${etabliss.id})}"><img th:src="@{/images/croixRouge2.jpg}"/></a></td>
+                            <td><button onclick="myFunction()"><a th:href="@{/etablissement/delete/{id} (id = ${etabliss.id})}"><img th:src="@{/images/croixRouge2.jpg}"/></a></button></td>
                         </tr>
                     </tbody>
                     
@@ -126,6 +126,9 @@
     </div>
 </div>
 
-<script src="../../static/js/project.js" th:src="@{/js/project.js}"></script>
+<script src="../../static/js/project.js" th:src="@{/js/project.js}">
+function myFunction() {
+    confirm("Press a button!");
+}</script>
 </body>
 </html>

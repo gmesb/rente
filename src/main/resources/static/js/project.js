@@ -22,3 +22,6 @@ $("#btn-raz").click(function(evenement) {
     $('#btnAjout').attr('disabled',true);
 });
 
+function delete() {
+    confirm("Voulez-vous vraiment supprimer?");
+}

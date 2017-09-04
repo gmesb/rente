@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html id="accueil" xmlns:th="http://www.thymeleaf.org" lang="fr"
-	xmlns:sec="http://www.w3.org/1999/xhtml">
+<html id="accueil" xmlns:th="http://www.thymeleaf.org" lang="fr" xmlns:sec="http://www.w3.org/1999/xhtml">
 	<title>Gestion des rentiers</title>
 
 
@@ -180,7 +179,7 @@
 
 							<td
 								sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_SUPERVISOR')">
-								<a th:href="@{/rentier/delete/{id} (id = ${rentier.id})}"><img
+								<a onclick="delete()" th:href="@{/rentier/delete/{id} (id = ${rentier.id})}"><img
 									th:src="@{/images/croixRouge2.jpg}" /></a>
 							</td>
 						</tr>

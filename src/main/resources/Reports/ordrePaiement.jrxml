@@ -132,21 +132,21 @@ FROM
 				<text><![CDATA[Revalorisation  :]]></text>
 			</staticText>
 			<textField pattern="##0.00 %">
-				<reportElement x="81" y="368" width="44" height="16" uuid="d93c27ed-9635-45b4-8cff-cd6cb0d7533c"/>
+				<reportElement x="79" y="368" width="44" height="16" uuid="d93c27ed-9635-45b4-8cff-cd6cb0d7533c"/>
 				<textElement>
 					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{v_ordreliquidatif_coeff}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy">
-				<reportElement x="143" y="368" width="53" height="16" uuid="986eca7d-3f76-41db-8d98-47802df9d761"/>
+				<reportElement x="140" y="368" width="53" height="16" uuid="986eca7d-3f76-41db-8d98-47802df9d761"/>
 				<textElement>
 					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{v_ordreliquidatif_datedeb}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="125" y="368" width="18" height="16" uuid="df0913f0-3c2f-489c-b943-b019f308b9b9"/>
+				<reportElement x="123" y="368" width="18" height="16" uuid="df0913f0-3c2f-489c-b943-b019f308b9b9"/>
 				<textElement>
 					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
@@ -366,28 +366,28 @@ FROM
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement x="201" y="368" width="64" height="16" uuid="157cc523-f952-42e4-aa8b-dfe3503416e9"/>
+				<reportElement x="216" y="368" width="64" height="16" uuid="157cc523-f952-42e4-aa8b-dfe3503416e9"/>
 				<textElement>
 					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[Application :]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="264" y="368" width="182" height="16" uuid="6c781c99-d9a3-458b-b6f1-527e546df46c"/>
+				<reportElement x="280" y="368" width="182" height="16" uuid="6c781c99-d9a3-458b-b6f1-527e546df46c"/>
 				<textElement>
 					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{v_ordreliquidatif_directive}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="447" y="368" width="18" height="16" uuid="20b37b7c-fe9c-45f1-8d7e-609b7be385d2"/>
+				<reportElement x="454" y="368" width="18" height="16" uuid="20b37b7c-fe9c-45f1-8d7e-609b7be385d2"/>
 				<textElement>
 					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[au ]]></text>
 			</staticText>
 			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
-				<reportElement x="465" y="368" width="72" height="16" uuid="72bbed5c-e3f7-47e0-9156-66b905a0e556"/>
+				<reportElement x="470" y="368" width="72" height="16" uuid="72bbed5c-e3f7-47e0-9156-66b905a0e556"/>
 				<textElement>
 					<font fontName="DejaVu Sans" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
